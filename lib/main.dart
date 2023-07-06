@@ -19,9 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -58,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('Dayéirö'),
         backgroundColor: Color(0xFF1C207F),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
@@ -73,13 +71,13 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             Container(
               height: 60,
-              color: Colors.grey,
+              color: Colors.white,
               child: const Center(
                 child: Text(
                   'Documentos Recientes',
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.white,
+                    color: Color(0xFF1C207F),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -87,6 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(height: 10),
             Container(
+              color: Colors.black12,
               height: 550, // Ajusta la altura según tus preferencias
               child: ListView.separated(
                 physics:
@@ -124,50 +123,57 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        color: Color(0xFFF1F4F8),
-        child: Container(
-          height: 100,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              IconButton(
-                onPressed: _createFile,
-                icon: Icon(
-                  Icons.add_circle_outline_outlined,
-                  color: Color(0xFF1C207F),
-                  size: 38,
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+        child: BottomAppBar(
+          shape: const CircularNotchedRectangle(),
+          color: Color(0xFFF1F4F8),
+          child: Container(
+            height: 100,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                  onPressed: _createFile,
+                  icon: Icon(
+                    Icons.add_circle_outline_outlined,
+                    color: Color(0xFF1C207F),
+                    size: 38,
+                  ),
                 ),
-              ),
-              IconButton(
-                onPressed: null,
-                icon: Icon(
-                  Icons.upload_file_outlined,
-                  color: Color(0xFF1C207F),
-                  size: 38,
+                IconButton(
+                  onPressed: null,
+                  icon: Icon(
+                    Icons.upload_file_outlined,
+                    color: Color(0xFF1C207F),
+                    size: 38,
+                  ),
                 ),
-              ),
-              IconButton(
-                onPressed: null,
-                icon: Icon(
-                  Icons.settings,
-                  color: Color(0xFF1C207F),
-                  size: 38,
+                IconButton(
+                  onPressed: null,
+                  icon: Icon(
+                    Icons.settings,
+                    color: Color(0xFF1C207F),
+                    size: 38,
+                  ),
                 ),
-              ),
-              IconButton(
-                onPressed: null,
-                icon: Icon(
-                  Icons.exit_to_app,
-                  color: Color(0xFF1C207F),
-                  size: 38,
+                IconButton(
+                  onPressed: null,
+                  icon: Icon(
+                    Icons.exit_to_app,
+                    color: Color(0xFF1C207F),
+                    size: 38,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
+
     );
   }
 
