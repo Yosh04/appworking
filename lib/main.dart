@@ -5,6 +5,10 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as path;
 import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:untitled/generador.dart';
+import 'package:permission_handler/permission_handler.dart';
+
 
 //Paquetes de starlin.
 
@@ -38,7 +42,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _fileText = '';
 
   @override
   Widget build(BuildContext context) {
@@ -51,20 +54,9 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(onPressed: _pickFile, child: Text('Pick file')),
+            ElevatedButton(onPressed: _pickDirectory, child: Text('LIST DIRECTORY FILES')),
             SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: _LoadAllFilesList,
-              child: Text('Load Documents'),
-            ),
-            SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: _pickDirectory,
-              child: Text('Select the files'),
-            ),
-            SizedBox(height: 10),
-
-            Text(_fileText),
+            ElevatedButton(onPressed: _pickDirectoryExter, child: Text('CREATE PFD')),
             SizedBox(height: 10),
             ListView.builder(
               shrinkWrap: true,
@@ -73,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 String fileName = basename(files[index].path);
                 return ElevatedButton(
                   onPressed: () {
-                    OpenFile.open(_filePath + basename(files[index].path));
+                    _pickFile(files[index].path);
                   },
                   child: Text(fileName),
                 );
@@ -86,78 +78,88 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void _pickFile() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles();
 
-    if (result != null && result.files.single.path != null) {
-      /// Load result and file details
-      File _file = File(result.files.single.path!);
-      PlatformFile file = result.files.first;
-      print(file.name);
-      print(file.bytes);
-      print(file.size);
-      print(file.extension);
-      print(file.path);
-      setState(() {
-        _fileText = _file.path;
-      });
 
-      // Abre el archivo PDF después de generarlo
-      OpenFile.open(_file.path);
-    } else {
-      // User canceled the picker
-    }
+
+  void _pickFile(String filePath) async {
+    OpenFile.open(filePath); // Abre el archivo usando la ruta proporcionada
   }
 
-  final String _filePath = '/data/user/0/com.example.untitled/cache/file_picker/';
+  //final String _filePath = '/data/user/0/com.example.untitled/app_flutter/';
   List<FileSystemEntity> files =[];
+  Directory appDocumentsDirectory = Directory('/storage/emulated/0/books');
 
-  void _LoadAllFilesList() {
-    Directory directory = Directory(_filePath);
-    files = directory.listSync();
-    print(files);
-    if (files.isNotEmpty) {
-      String fileNames = '';
-      for (var file in files) {
-        if (file is File) {
-          fileNames += basename(file.path) + '\n';
-        }
-      }
-      setState(() {
-        _fileText = fileNames; // Actualizar el widget de tipo Text
-      });
+  void _pickDirectoryExter() async {
+
+
+
+
+    var statusWR = await Permission.manageExternalStorage.request();
+
+    print(appDocumentsDirectory);
+
+    if (statusWR.isGranted) {
+      print(statusWR);
+      //listarArchivosRecursivos(appDocumentsDirectory);
+      generatePDFAndOpen(appDocumentsDirectory);
     } else {
-      setState(() {
-        _fileText = 'No hay archivos en la ruta especificada.';
-      });
+      print(statusWR);
+    }
+
+
+  }
+
+  Future<void> requestStoragePermission() async {
+    var status = await Permission.storage.request();
+    if (status.isGranted) {
+
+    } else {
+
     }
   }
 
   void _pickDirectory() async {
-    String? selectedDirectory = await FilePicker.platform.getDirectoryPath();
-    if (selectedDirectory != null) {
-      setState(() {
-        _fileText = selectedDirectory;
-      });
+    //Directory appDocumentsDirectory = Directory('/storage/emulated/0/books');
+    Directory appDocumentsDirectory = Directory('/storage/emulated/0/books');
+    await requestStoragePermission(); // Esperar la ejecución de requestStoragePermission()
+
+
+    var statusWR = await Permission.manageExternalStorage.request();
+
+    print(appDocumentsDirectory);
+
+    if (statusWR.isGranted) {
+      print(statusWR);
+      listarArchivosRecursivos(appDocumentsDirectory);
+      generatePDFAndOpen(appDocumentsDirectory);
     } else {
-// User canceled the picker
+      print(statusWR);
     }
+
   }
 
-  void _listPath() async {
-    String? selectedDirectory = await FilePicker.platform.getDirectoryPath();
-    Directory directory = Directory(_filePath);
-    files = directory.listSync();
+
+  Future<void> listarArchivosRecursivos(Directory directorio) async {
+    files = directorio.listSync(recursive: true).where((e) => e is File && e.path.endsWith('.pdf')).toList();
     print(files);
+    print(await directorio.exists());
+    String absolutePath = directorio.absolute.path;
+    bool isDirectoryEmpty = directorio.listSync().isEmpty;
+    print(isDirectoryEmpty);
 
-    if (selectedDirectory != null) {
+    print(absolutePath);
+
+    if (files.isNotEmpty) {
       setState(() {
-        _fileText = selectedDirectory;
+        //_fileText = fileNames; // Actualizar el widget de tipo Text
       });
     } else {
-// User canceled the picker
+      setState(() {
+        //_fileText = 'No hay archivos en la ruta especificada.';
+      });
     }
   }
+
 
 
 }
