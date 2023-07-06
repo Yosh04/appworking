@@ -8,7 +8,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:untitled/generador.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:async';
-
+//Pachage widgets home
+import 'widgets home/bottomNavigationBar.dart';
 //Package components
 import 'components/create_folder.dart';
 import 'components/selectFile.dart';
@@ -96,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: 10),
             Container(
               color: Colors.black12,
-              height: 550, // Ajusta la altura según tus preferencias
+              height: 450, // Ajusta la altura según tus preferencias
               child: ListView.separated(
                 physics:
                     const ClampingScrollPhysics(), // Habilita el desplazamiento vertical en el ListView
@@ -133,55 +134,9 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: ClipRRect(
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-        ),
-        child: BottomAppBar(
-          shape: const CircularNotchedRectangle(),
-          color: const Color(0xFFF1F4F8),
-          child: Container(
-            height: 100,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                IconButton(
-                  onPressed: _createFile,
-                  icon: const Icon(
-                    Icons.add_circle_outline_outlined,
-                    color: Color(0xFF1C207F),
-                    size: 38,
-                  ),
-                ),
-                const IconButton(
-                  onPressed: null,
-                  icon: Icon(
-                    Icons.upload_file_outlined,
-                    color: Color(0xFF1C207F),
-                    size: 38,
-                  ),
-                ),
-                const IconButton(
-                  onPressed: null,
-                  icon: Icon(
-                    Icons.settings,
-                    color: Color(0xFF1C207F),
-                    size: 38,
-                  ),
-                ),
-                const IconButton(
-                  onPressed: null,
-                  icon: Icon(
-                    Icons.exit_to_app,
-                    color: Color(0xFF1C207F),
-                    size: 38,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+      bottomNavigationBar: CustomBottomNavigationBar(
+        onAddPressed:
+            _createFile, // Reemplaza _createFile con la función que deseas llamar al presionar el botón de agregar
       ),
     );
   }
