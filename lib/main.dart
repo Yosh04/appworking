@@ -12,10 +12,7 @@ import 'dart:async';
 //Package components
 import 'components/create_folder.dart';
 import 'components/selectFile.dart';
-
-
-
-
+import 'components/readFolders.dart';
 
 import 'package:open_file/open_file.dart'; // Importa la biblioteca open_file
 
@@ -24,9 +21,9 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -44,14 +41,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Timer? timer;
-
+  List<FileSystemEntity> files = [];
+  Directory appDocumentsDirectory = Directory(
+      '/storage/emulated/0/Android/data/com.example.untitled/files/formularios de inspeccion');
 
   @override
   void initState() {
     super.initState();
     createFolder();
-    pickDirectory();
+    pickDirectory(appDocumentsDirectory).then((fileList) {
+      setState(() {
+        files = fileList;
+      });
+    });
   }
 
   @override
@@ -64,8 +66,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dayéirö'),
-        backgroundColor: Color(0xFF1C207F),
+        title: const Text('Guardacostas'),
+        backgroundColor: const Color(0xFF1C207F),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(
@@ -132,13 +134,13 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
         ),
         child: BottomAppBar(
           shape: const CircularNotchedRectangle(),
-          color: Color(0xFFF1F4F8),
+          color: const Color(0xFFF1F4F8),
           child: Container(
             height: 100,
             child: Row(
@@ -146,13 +148,13 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 IconButton(
                   onPressed: _createFile,
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.add_circle_outline_outlined,
                     color: Color(0xFF1C207F),
                     size: 38,
                   ),
                 ),
-                IconButton(
+                const IconButton(
                   onPressed: null,
                   icon: Icon(
                     Icons.upload_file_outlined,
@@ -160,7 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     size: 38,
                   ),
                 ),
-                IconButton(
+                const IconButton(
                   onPressed: null,
                   icon: Icon(
                     Icons.settings,
@@ -168,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     size: 38,
                   ),
                 ),
-                IconButton(
+                const IconButton(
                   onPressed: null,
                   icon: Icon(
                     Icons.exit_to_app,
@@ -184,14 +186,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-
-
   //Important Code.
-
-  Directory appDocumentsDirectory = Directory(
-      '/storage/emulated/0/Android/data/com.example.untitled/files/formularios de inspeccion');
-  List<FileSystemEntity> files = [];
-
 
   void _createFile() async {
     var statusPermission = await Permission.manageExternalStorage.request();
@@ -208,27 +203,4 @@ class _MyHomePageState extends State<MyHomePage> {
       print(statusPermission);
     }
   }
-
-
-  void pickDirectory() async {
-    final externalDir = await getExternalStorageDirectory();
-    if (externalDir != null) {
-      print('Permitido amigo mio.');
-      listFilesDirectory(appDocumentsDirectory);
-      timer = Timer.periodic(const Duration(seconds: 20), (Timer t) {
-        listFilesDirectory(appDocumentsDirectory);
-      });
-    } else {
-      print('Denegado amigo mio.');
-    }
-  }
-
-  Future<void> listFilesDirectory(Directory directorio) async {
-    files = directorio
-        .listSync(recursive: true)
-        .where((e) => e is File && e.path.endsWith('.pdf'))
-        .toList();
-    print(files);
-  }
-
 }
