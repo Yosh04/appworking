@@ -59,6 +59,13 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        backgroundColor: Color(0xFF1C207F),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(
+                20), // Ajusta el valor de acuerdo a tus preferencias
+          ),
+        ),
       ),
       body: Center(
         child: Column(
@@ -78,9 +85,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            const SizedBox(height: 10),
-            ElevatedButton(
-                onPressed: _createFile, child: const Text('CREATE PFD')),
             const SizedBox(height: 10),
             Container(
               height: 550, // Ajusta la altura según tus preferencias
@@ -121,47 +125,48 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-          shape: const CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
+        color: Color(0xFFF1F4F8),
+        child: Container(
           height: 100,
-          color: Colors.brown,
-          child: Container(
-              child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                IconButton(
-                    onPressed: null,
-                    icon: Icon(
-                      Icons.add_circle_outline_outlined,
-                      color: Color(0xFF1C207F),
-                      size: 38,
-                    )),
-                IconButton(
-                  onPressed: null,
-                  icon: Icon(
-                    Icons.upload_file_outlined,
-                    color: Color(0xFF1C207F),
-                    size: 38,
-                  ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
+                onPressed: _createFile,
+                icon: Icon(
+                  Icons.add_circle_outline_outlined,
+                  color: Color(0xFF1C207F),
+                  size: 38,
                 ),
-                IconButton(
-                  onPressed: null,
-                  icon: Icon(
-                    Icons.settings,
-                    color: Color(0xFF1C207F),
-                    size: 38,
-                  ),
+              ),
+              IconButton(
+                onPressed: null,
+                icon: Icon(
+                  Icons.upload_file_outlined,
+                  color: Color(0xFF1C207F),
+                  size: 38,
                 ),
-                IconButton(
-                  onPressed: null,
-                  icon: Icon(
-                    Icons.exit_to_app,
-                    color: Color(0xFF1C207F),
-                    size: 38,
-                  ),
-                )
-              ]
-              )
-          )
+              ),
+              IconButton(
+                onPressed: null,
+                icon: Icon(
+                  Icons.settings,
+                  color: Color(0xFF1C207F),
+                  size: 38,
+                ),
+              ),
+              IconButton(
+                onPressed: null,
+                icon: Icon(
+                  Icons.exit_to_app,
+                  color: Color(0xFF1C207F),
+                  size: 38,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
