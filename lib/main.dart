@@ -9,8 +9,14 @@ import 'package:untitled/generador.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:async';
 
-//Paquetes de starlin.
+//Package components
 import 'components/create_folder.dart';
+import 'components/selectFile.dart';
+
+
+
+
+
 import 'package:open_file/open_file.dart'; // Importa la biblioteca open_file
 
 void main() => runApp(MyApp());
@@ -40,11 +46,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   Timer? timer;
 
+
   @override
   void initState() {
     super.initState();
     createFolder();
-    _pickDirectory();
+    pickDirectory();
   }
 
   @override
@@ -97,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   String fileName = basename(files[index].path);
                   return ElevatedButton(
                     onPressed: () {
-                      _pickFile(files[index].path);
+                      pickFile(files[index].path);
                     },
                     child: Container(
                       height: 60,
@@ -177,14 +184,14 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void _pickFile(String filePath) async {
-    OpenFile.open(filePath); // Abre el archivo usando la ruta proporcionada
-  }
 
-  //final String _filePath = '/data/user/0/com.example.untitled/app_flutter/';
-  List<FileSystemEntity> files = [];
+
+  //Important Code.
+
   Directory appDocumentsDirectory = Directory(
       '/storage/emulated/0/Android/data/com.example.untitled/files/formularios de inspeccion');
+  List<FileSystemEntity> files = [];
+
 
   void _createFile() async {
     var statusPermission = await Permission.manageExternalStorage.request();
@@ -194,7 +201,7 @@ class _MyHomePageState extends State<MyHomePage> {
       print(statusPermission);
       generatePDFAndOpen(appDocumentsDirectory);
       timer = Timer.periodic(const Duration(seconds: 5), (Timer t) {
-        listarArchivosRecursivos(appDocumentsDirectory);
+        listFilesDirectory(appDocumentsDirectory);
         timer?.cancel();
       });
     } else {
@@ -202,42 +209,26 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  void _pickDirectory() async {
+
+  void pickDirectory() async {
     final externalDir = await getExternalStorageDirectory();
-    Directory appDocumentsDirectory = Directory(
-        '/storage/emulated/0/Android/data/com.example.untitled/files/formularios de inspeccion');
     if (externalDir != null) {
       print('Permitido amigo mio.');
-      listarArchivosRecursivos(appDocumentsDirectory);
+      listFilesDirectory(appDocumentsDirectory);
       timer = Timer.periodic(const Duration(seconds: 20), (Timer t) {
-        listarArchivosRecursivos(appDocumentsDirectory);
+        listFilesDirectory(appDocumentsDirectory);
       });
     } else {
       print('Denegado amigo mio.');
     }
   }
 
-  Future<void> listarArchivosRecursivos(Directory directorio) async {
+  Future<void> listFilesDirectory(Directory directorio) async {
     files = directorio
         .listSync(recursive: true)
         .where((e) => e is File && e.path.endsWith('.pdf'))
         .toList();
     print(files);
-    print(await directorio.exists());
-    String absolutePath = directorio.absolute.path;
-    bool isDirectoryEmpty = directorio.listSync().isEmpty;
-    print(isDirectoryEmpty);
-
-    print(absolutePath);
-
-    if (files.isNotEmpty) {
-      setState(() {
-        //_fileText = fileNames; // Actualizar el widget de tipo Text
-      });
-    } else {
-      setState(() {
-        //_fileText = 'No hay archivos en la ruta especificada.';
-      });
-    }
   }
+
 }
