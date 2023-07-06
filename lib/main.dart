@@ -188,9 +188,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _createFile() async {
     var statusPermission = await Permission.manageExternalStorage.request();
-
+    final externalDir = await getExternalStorageDirectory();
     print(appDocumentsDirectory);
-    if (statusPermission.isGranted) {
+    if (externalDir != null) {
       print(statusPermission);
       generatePDFAndOpen(appDocumentsDirectory);
       timer = Timer.periodic(const Duration(seconds: 5), (Timer t) {
