@@ -10,6 +10,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'dart:async';
 //Pachage widgets home
 import 'widgets home/bottomNavigationBar.dart';
+import 'widgets home/pdfviews.dart';
 //Package components
 import 'components/create_folder.dart';
 import 'components/selectFile.dart';
@@ -81,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              height: 60,
+              height: 50,
               color: Colors.white,
               child: const Center(
                 child: Text(
@@ -95,42 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const SizedBox(height: 10),
-            Container(
-              color: Colors.black12,
-              height: 450, // Ajusta la altura según tus preferencias
-              child: ListView.separated(
-                physics:
-                    const ClampingScrollPhysics(), // Habilita el desplazamiento vertical en el ListView
-                shrinkWrap: true,
-                itemCount: files.length,
-                itemBuilder: (context, index) {
-                  String fileName = basename(files[index].path);
-                  return ElevatedButton(
-                    onPressed: () {
-                      pickFile(files[index].path);
-                    },
-                    child: Container(
-                      height: 60,
-                      child: Row(
-                        children: [
-                          const Icon(Icons.picture_as_pdf,
-                              color: Colors.red, size: 50),
-                          Flexible(
-                            child: Text(
-                              fileName,
-                              style: const TextStyle(fontSize: 16),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: 10),
-              ),
-            ),
+            pdfView(files), //widget de pdf
           ],
         ),
       ),
@@ -150,9 +116,10 @@ class _MyHomePageState extends State<MyHomePage> {
     if (externalDir != null) {
       print(statusPermission);
       generatePDFAndOpen(appDocumentsDirectory);
-      timer = Timer.periodic(const Duration(seconds: 5), (Timer t) {
-        listFilesDirectory(appDocumentsDirectory);
-        timer?.cancel();
+      pickDirectory(appDocumentsDirectory).then((fileList) {
+        setState(() {
+          files = fileList;
+        });
       });
     } else {
       print(statusPermission);

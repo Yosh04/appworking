@@ -17,7 +17,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
         shape: const CircularNotchedRectangle(),
         color: const Color(0xFFF1F4F8),
         child: Container(
-          height: 100,
+          height: 65,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
