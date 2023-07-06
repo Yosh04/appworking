@@ -4,10 +4,11 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf/widgets.dart';
 import 'package:open_file/open_file.dart'; // Importa la biblioteca open_file
+import 'package:intl/intl.dart';
 
 Future<void> generatePDF(Directory appDocumentsDirectory) async {
   final pdf = pw.Document();
-
+  final nombreCarpeta = generarNombreFormularioSecuencial();
   pdf.addPage(
     pw.Page(
       build: (pw.Context context) {
@@ -29,7 +30,8 @@ Future<void> generatePDF(Directory appDocumentsDirectory) async {
     ),
   );
 
-  final filePath = '${appDocumentsDirectory.path}/starling888888888888.pdf'; // Ruta completa del archivo PDF
+  final filePath =
+      '${appDocumentsDirectory.path}/$nombreCarpeta.pdf'; // Ruta completa del archivo PDF
 
   final file = File(filePath);
   await file.writeAsBytes(await pdf.save());
@@ -40,4 +42,12 @@ Future<void> generatePDF(Directory appDocumentsDirectory) async {
 void generatePDFAndOpen(Directory appDocumentsDirectory) async {
   await generatePDF(appDocumentsDirectory);
   print('PDF generado exitosamente.');
+}
+
+String generarNombreFormularioSecuencial() {
+  final now = DateTime.now();
+  final formattedDate = DateFormat('yyyyMMdd_HHmmss').format(now);
+  final nombreSecuencial = 'formulario_$formattedDate';
+
+  return nombreSecuencial;
 }

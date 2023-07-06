@@ -37,7 +37,7 @@ dependencies:
   path: ^1.8.0
   pdf: ^3.10.1
   permission_handler: ^10.4.1
-
+  intl: ^0.18.1
 
 
 
