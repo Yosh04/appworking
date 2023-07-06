@@ -43,7 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    createfolder();
+    createFolder();
+    _pickDirectory();
   }
 
   @override
@@ -182,7 +183,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   //final String _filePath = '/data/user/0/com.example.untitled/app_flutter/';
   List<FileSystemEntity> files = [];
-  Directory appDocumentsDirectory = Directory('/storage/emulated/0/download');
+  Directory appDocumentsDirectory = Directory(
+      '/storage/emulated/0/Android/data/com.example.untitled/files/formularios de inspeccion');
 
   void _createFile() async {
     var statusPermission = await Permission.manageExternalStorage.request();
@@ -201,18 +203,17 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _pickDirectory() async {
-    var statusPermission = await Permission.manageExternalStorage.request();
-    Directory appDocumentsDirectory = Directory('/storage/emulated/0/download');
-    if (statusPermission.isGranted) {
+    final externalDir = await getExternalStorageDirectory();
+    Directory appDocumentsDirectory = Directory(
+        '/storage/emulated/0/Android/data/com.example.untitled/files/formularios de inspeccion');
+    if (externalDir != null) {
       print('Permitido amigo mio.');
-      print(statusPermission);
       listarArchivosRecursivos(appDocumentsDirectory);
       timer = Timer.periodic(const Duration(seconds: 20), (Timer t) {
         listarArchivosRecursivos(appDocumentsDirectory);
       });
     } else {
       print('Denegado amigo mio.');
-      print(statusPermission);
     }
   }
 
