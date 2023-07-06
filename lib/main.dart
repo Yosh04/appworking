@@ -1,3 +1,4 @@
+
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
@@ -7,7 +8,6 @@ import 'package:path/path.dart';
 
 //Paquetes de starlin.
 
-import 'package:path_provider/path_provider.dart';
 
 import 'package:open_file/open_file.dart'; // Importa la biblioteca open_file
 
@@ -52,30 +52,41 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(onPressed: _pickFile, child: Text('Pick file')),
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: 10),
             ElevatedButton(
-                onPressed: _pickMultipliFiles2,
-                child: Text('Pick multiple file2')),
-            SizedBox(
-              height: 10,
+              onPressed: _LoadAllFilesList,
+              child: Text('Load Documents'),
             ),
+            SizedBox(height: 10),
             ElevatedButton(
-                onPressed: _openFilePathPdf,
-                child: Text('Pick multiple file2')),
-              SizedBox(
-              height: 10,
+              onPressed: _pickDirectory,
+              child: Text('Select the files'),
             ),
+            SizedBox(height: 10),
+
             Text(_fileText),
+            SizedBox(height: 10),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: files.length,
+              itemBuilder: (context, index) {
+                String fileName = basename(files[index].path);
+                return ElevatedButton(
+                  onPressed: () {
+                    OpenFile.open(_filePath + basename(files[index].path));
+                  },
+                  child: Text(fileName),
+                );
+              },
+            ),
           ],
         ),
       ),
+
     );
   }
 
   void _pickFile() async {
-
     FilePickerResult? result = await FilePicker.platform.pickFiles();
 
     if (result != null && result.files.single.path != null) {
@@ -98,10 +109,10 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  String _filePath = '/data/user/0/com.example.untitled/cache/file_picker/';
-
+  final String _filePath = '/data/user/0/com.example.untitled/cache/file_picker/';
   List<FileSystemEntity> files =[];
-  void _pickMultipliFiles2() {
+
+  void _LoadAllFilesList() {
     Directory directory = Directory(_filePath);
     files = directory.listSync();
     print(files);
@@ -110,7 +121,6 @@ class _MyHomePageState extends State<MyHomePage> {
       for (var file in files) {
         if (file is File) {
           fileNames += basename(file.path) + '\n';
-
         }
       }
       setState(() {
@@ -123,15 +133,30 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  void _openFilePathPdf() async{
-
+  void _pickDirectory() async {
+    String? selectedDirectory = await FilePicker.platform.getDirectoryPath();
+    if (selectedDirectory != null) {
+      setState(() {
+        _fileText = selectedDirectory;
+      });
+    } else {
+// User canceled the picker
+    }
   }
-  Widget cuerpo() {
 
+  void _listPath() async {
+    String? selectedDirectory = await FilePicker.platform.getDirectoryPath();
+    Directory directory = Directory(_filePath);
+    files = directory.listSync();
+    print(files);
 
-    return Container(
-
-    );
+    if (selectedDirectory != null) {
+      setState(() {
+        _fileText = selectedDirectory;
+      });
+    } else {
+// User canceled the picker
+    }
   }
 
 
