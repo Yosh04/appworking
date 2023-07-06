@@ -10,7 +10,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'dart:async';
 
 //Paquetes de starlin.
-
+import 'components/create_folder.dart';
 import 'package:open_file/open_file.dart'; // Importa la biblioteca open_file
 
 void main() => runApp(MyApp());
@@ -43,7 +43,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    _pickDirectory();
   }
 
   @override
@@ -173,7 +172,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-
     );
   }
 
@@ -183,7 +181,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   //final String _filePath = '/data/user/0/com.example.untitled/app_flutter/';
   List<FileSystemEntity> files = [];
-  Directory appDocumentsDirectory = Directory('/storage/emulated/0/books');
+  Directory appDocumentsDirectory = Directory('/storage/emulated/0/download');
 
   void _createFile() async {
     var statusPermission = await Permission.manageExternalStorage.request();
@@ -203,7 +201,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _pickDirectory() async {
     var statusPermission = await Permission.manageExternalStorage.request();
-    Directory appDocumentsDirectory = Directory('/storage/emulated/0/books');
+    Directory appDocumentsDirectory = Directory('/storage/emulated/0/download');
     if (statusPermission.isGranted) {
       print('Permitido amigo mio.');
       print(statusPermission);
