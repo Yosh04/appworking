@@ -100,10 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: CustomBottomNavigationBar(
-        onAddPressed:
-            _createFile, // Reemplaza _createFile con la función que deseas llamar al presionar el botón de agregar
-      ),
+      bottomNavigationBar: CustomBottomNavigationBar(),
     );
   }
 

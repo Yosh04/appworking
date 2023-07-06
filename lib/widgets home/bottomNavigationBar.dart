@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/pageform/formPage.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
-  final Function? onAddPressed;
-
-  const CustomBottomNavigationBar({Key? key, this.onAddPressed})
-      : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -22,7 +18,10 @@ class CustomBottomNavigationBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               IconButton(
-                onPressed: onAddPressed as void Function()?,
+                onPressed: () => {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => FormPage()))
+                },
                 icon: const Icon(
                   Icons.add_circle_outline_outlined,
                   color: Color(0xFF1C207F),
