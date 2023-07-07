@@ -7,12 +7,14 @@ class MotorFormularioWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int cantidadMotoresLimitada = cantidadMotores.clamp(0, 10);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: List.generate(
-            cantidadMotores, (index) => buildMotorFormField(index + 1)),
+            cantidadMotoresLimitada, (index) => buildMotorFormField(index + 1)),
       ),
     );
   }

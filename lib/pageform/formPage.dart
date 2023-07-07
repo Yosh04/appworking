@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import './widgets form/navigationPrev.dart';
 import './widgets form/inspectionForm.dart';
 import './widgets form/boatForm.dart';
-import './widgets form/motorForm.dart';
 
 class FormPage extends StatefulWidget {
   @override
