@@ -736,11 +736,11 @@ class _IncidentsFormState extends State<IncidentsForm> {
                 children: [
                   Expanded(
                     child: Container(
-                      height: 48.0,
+                      height: 78.0,
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('DC1'),
+                        child: Text('RN1'),
                       ),
                     ),
                   ),
@@ -750,7 +750,7 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Piratería (Asalto a una Embarcación)'),
+                        child: Text('Invasión de una zona protegida'),
                       ),
                     ),
                   ),
@@ -761,10 +761,10 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       child: Align(
                         alignment: Alignment.center,
                         child: Checkbox(
-                          value: _isDC1Checked, // Valor del checkbox
+                          value: _isRN1Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isDC1Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isRN1Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -782,17 +782,17 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('DC2'),
+                        child: Text('RN2'),
                       ),
                     ),
                   ),
                   Expanded(
                     child: Container(
-                      height: 48.0,
+                      height: 78.0,
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Transporte de ilegales'),
+                        child: Text('Invasión de la zona marítimo terrestre'),
                       ),
                     ),
                   ),
@@ -803,10 +803,10 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       child: Align(
                         alignment: Alignment.center,
                         child: Checkbox(
-                          value: _isDC2Checked, // Valor del checkbox
+                          value: _isRN2Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isDC2Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isRN2Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -824,17 +824,17 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('DC3'),
+                        child: Text('RN3'),
                       ),
                     ),
                   ),
                   Expanded(
                     child: Container(
-                      height: 48.0,
+                      height: 78.0,
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Robos de productos, Embarcación , motores'),
+                        child: Text('Tala de bosque costero y humedales'),
                       ),
                     ),
                   ),
@@ -845,10 +845,472 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       child: Align(
                         alignment: Alignment.center,
                         child: Checkbox(
-                          value: _isDC3Checked, // Valor del checkbox
+                          value: _isRN3Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isDC3Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isRN3Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('RN4'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 78.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('DET Inspecciones a barcos camaroneros'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isRN4Checked, // Valor del checkbox
+                          onChanged: (value) {
+                            setState(() {
+                              _isRN4Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('RN5'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 110.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Levantamiento de artes de pesca (Trasmallos, líneas, rastras, etc.)	'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isRN5Checked, // Valor del checkbox
+                          onChanged: (value) {
+                            setState(() {
+                              _isRN5Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('RN6'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 110.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Caza de tortugas y extracción de huevos, extracción de nidos'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isRN6Checked, // Valor del checkbox
+                          onChanged: (value) {
+                            setState(() {
+                              _isRN6Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('RN7'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 110.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Cacería Ilegal (EXCEPTO LO RELACIONADO A TORTUGAS MARINAS)'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isRN7Checked, // Valor del checkbox
+                          onChanged: (value) {
+                            setState(() {
+                              _isRN7Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('RN8'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 110.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Decomiso de fauna silvestre'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isRN8Checked, // Valor del checkbox
+                          onChanged: (value) {
+                            setState(() {
+                              _isRN8Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('RN9'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 110.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Encallamiento de ballenas y delfines'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isRN9Checked, // Valor del checkbox
+                          onChanged: (value) {
+                            setState(() {
+                              _isRN9Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('RN10'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 110.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Contaminación'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isRN10Checked, // Valor del checkbox
+                          onChanged: (value) {
+                            setState(() {
+                              _isRN10Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('RN11'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 110.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Embarcación SIN Licencia de Pesca (PESCA ILEGAL)'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isRN11Checked, // Valor del checkbox
+                          onChanged: (value) {
+                            setState(() {
+                              _isRN11Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('RN 12-1'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 110.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Pesca Ilegal, artes de pesca prohibidas'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isRN12_1Checked, // Valor del checkbox
+                          onChanged: (value) {
+                            setState(() {
+                              _isRN12_1Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('RN 12-3'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 110.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Pesca Ilegal, durante veda'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isRN12_3Checked, // Valor del checkbox
+                          onChanged: (value) {
+                            setState(() {
+                              _isRN12_3Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('RN 12-2'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 110.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Pesca Ilegal, áreas protegidas'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isRN12_2Checked, // Valor del checkbox
+                          onChanged: (value) {
+                            setState(() {
+                              _isRN12_2Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
