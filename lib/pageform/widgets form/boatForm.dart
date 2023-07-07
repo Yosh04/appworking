@@ -17,6 +17,8 @@ class FormularioWidget extends StatelessWidget {
             _buildFormField("Capacidad Tanq. Carga"),
             SizedBox(height: 16),
             _buildFormField("Capacidad Tanq. Agua"),
+            SizedBox(height: 16),
+            _buildNumericFormField("Cantidad de Motores"),
             Divider(),
             _buildFormField("Eslora"),
             SizedBox(height: 16),
@@ -32,11 +34,9 @@ class FormularioWidget extends StatelessWidget {
             Divider(),
             _buildFormField("Equipo De Navegacion"),
             SizedBox(height: 16),
-            _buildNumericFormField(
-                "Tripulacion"), // Utiliza _buildNumericFormField para recibir solo números
+            _buildNumericFormField("Tripulacion"),
             SizedBox(height: 16),
-            _buildNumericFormField(
-                "Pasajeros"), // Utiliza _buildNumericFormField para recibir solo números
+            _buildNumericFormField("Pasajeros"),
             Divider(),
             _buildFormField("Actividad Al Momento Del Abordaje"),
             Divider(),
