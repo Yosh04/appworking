@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class FormularioWidget extends StatelessWidget {
   @override
@@ -25,19 +26,17 @@ class FormularioWidget extends StatelessWidget {
             SizedBox(height: 16),
             _buildFormField("Calado"),
             SizedBox(height: 16),
-            _buildFormField("Trb"),
+            _buildFormField("Tonelaje Bruto"),
             SizedBox(height: 16),
-            _buildFormField("Trn"),
+            _buildFormField("Tonelaje Neto"),
             Divider(),
             _buildFormField("Equipo De Navegacion"),
             SizedBox(height: 16),
-            _buildFormField("Características Generales De La Embarcacion"),
+            _buildNumericFormField(
+                "Tripulacion"), // Utiliza _buildNumericFormField para recibir solo números
             SizedBox(height: 16),
-            _buildFormField("Material Y Color Casco"),
-            Divider(),
-            _buildFormField("Tripulacion"),
-            SizedBox(height: 16),
-            _buildFormField("Pasajeros"),
+            _buildNumericFormField(
+                "Pasajeros"), // Utiliza _buildNumericFormField para recibir solo números
             Divider(),
             _buildFormField("Actividad Al Momento Del Abordaje"),
             Divider(),
@@ -48,12 +47,125 @@ class FormularioWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildFormField(String label) {
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: label,
-        border: OutlineInputBorder(),
+  Widget _buildNumericFormField(String label) {
+    return Theme(
+      data: ThemeData(
+        primaryColor: const Color(0xFF1C207F), // Color del texto y el borde
+        hintColor: const Color(0xFF1C207F), // Color del texto de sugerencia
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderSide:
+                BorderSide(color: const Color(0xFF1C207F)), // Color del borde
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: const Color(
+                    0xFF1C207F)), // Color del borde cuando está enfocado
+          ),
+          filled: true, // Relleno activado
+          fillColor: Colors.white, // Color de fondo
+        ),
       ),
+      child: TextFormField(
+        keyboardType: TextInputType.number, // Configura el teclado numérico
+        decoration: InputDecoration(
+          labelText: label,
+        ),
+        inputFormatters: <TextInputFormatter>[
+          FilteringTextInputFormatter
+              .digitsOnly // Limita la entrada solo a números
+        ],
+      ),
+    );
+  }
+
+  Widget _buildFormField(String label) {
+    return Theme(
+      data: ThemeData(
+        primaryColor: const Color(0xFF1C207F), // Color del texto y el borde
+        hintColor: const Color(0xFF1C207F), // Color del texto de sugerencia
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderSide:
+                BorderSide(color: const Color(0xFF1C207F)), // Color del borde
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: const Color(
+                    0xFF1C207F)), // Color del borde cuando está enfocado
+          ),
+          filled: true, // Relleno activado
+          fillColor: Colors.white, // Color de fondo
+        ),
+      ),
+      child: TextFormField(
+        decoration: InputDecoration(
+          labelText: label,
+        ),
+      ),
+    );
+  }
+}
+
+class ToggleBox extends StatefulWidget {
+  @override
+  _ToggleBoxState createState() => _ToggleBoxState();
+}
+
+class _ToggleBoxState extends State<ToggleBox> {
+  String selectedOption = "";
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ListTile(
+          title: const Text(
+            "Material:",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
+        RadioListTile<String>(
+          title: const Text("Fibra de vidrio"),
+          value: "Fibra de vidrio",
+          groupValue: selectedOption,
+          onChanged: (value) {
+            setState(() {
+              selectedOption = value!;
+            });
+          },
+        ),
+        RadioListTile<String>(
+          title: const Text("Madera"),
+          value: "Madera",
+          groupValue: selectedOption,
+          onChanged: (value) {
+            setState(() {
+              selectedOption = value!;
+            });
+          },
+        ),
+        RadioListTile<String>(
+          title: const Text("Metal"),
+          value: "Metal",
+          groupValue: selectedOption,
+          onChanged: (value) {
+            setState(() {
+              selectedOption = value!;
+            });
+          },
+        ),
+        RadioListTile<String>(
+          title: const Text("Cemento"),
+          value: "Cemento",
+          groupValue: selectedOption,
+          onChanged: (value) {
+            setState(() {
+              selectedOption = value!;
+            });
+          },
+        ),
+      ],
     );
   }
 }
