@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'motorForm.dart';
+import 'package:flutter/material.dart';
 
-class FormularioWidget extends StatelessWidget {
+class FormularioEmbarcacionWidget extends StatefulWidget {
+  @override
+  _FormularioEmbarcacionWidgetState createState() =>
+      _FormularioEmbarcacionWidgetState();
+}
+
+class _FormularioEmbarcacionWidgetState
+    extends State<FormularioEmbarcacionWidget> {
+  int cantidadMotores = 0;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -34,7 +45,7 @@ class FormularioWidget extends StatelessWidget {
             Divider(),
             _buildFormField("Equipo De Navegacion"),
             SizedBox(height: 16),
-            ToggleBox(), // Reemplaza _buildFormField("Material") por ToggleBox()
+            ToggleBox(),
             SizedBox(height: 16),
             _buildFormField("Color de Casco"),
             SizedBox(height: 16),
@@ -47,6 +58,9 @@ class FormularioWidget extends StatelessWidget {
             _buildFormField("Actividad Al Momento Del Abordaje"),
             Divider(),
             _buildFormField("Bitacora De La Embarcación"),
+            SingleChildScrollView(
+              child: MotorFormularioWidget(cantidadMotores: cantidadMotores),
+            ),
           ],
         ),
       ),
@@ -56,31 +70,32 @@ class FormularioWidget extends StatelessWidget {
   Widget _buildNumericFormField(String label) {
     return Theme(
       data: ThemeData(
-        primaryColor: const Color(0xFF1C207F), // Color del texto y el borde
-        hintColor: const Color(0xFF1C207F), // Color del texto de sugerencia
+        primaryColor: const Color(0xFF1C207F),
+        hintColor: const Color(0xFF1C207F),
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: const Color(0xFF1C207F)), // Color del borde
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-                color: const Color(
-                    0xFF1C207F)), // Color del borde cuando está enfocado
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
           ),
-          filled: true, // Relleno activado
-          fillColor: Colors.white, // Color de fondo
+          filled: true,
+          fillColor: Colors.white,
         ),
       ),
       child: TextFormField(
-        keyboardType: TextInputType.number, // Configura el teclado numérico
+        keyboardType: TextInputType.number,
         decoration: InputDecoration(
           labelText: label,
         ),
         inputFormatters: <TextInputFormatter>[
-          FilteringTextInputFormatter
-              .digitsOnly // Limita la entrada solo a números
+          FilteringTextInputFormatter.digitsOnly,
         ],
+        onChanged: (value) {
+          setState(() {
+            cantidadMotores = int.tryParse(value) ?? 0;
+          });
+        },
       ),
     );
   }
@@ -88,20 +103,17 @@ class FormularioWidget extends StatelessWidget {
   Widget _buildFormField(String label) {
     return Theme(
       data: ThemeData(
-        primaryColor: const Color(0xFF1C207F), // Color del texto y el borde
-        hintColor: const Color(0xFF1C207F), // Color del texto de sugerencia
+        primaryColor: const Color(0xFF1C207F),
+        hintColor: const Color(0xFF1C207F),
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: const Color(0xFF1C207F)), // Color del borde
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-                color: const Color(
-                    0xFF1C207F)), // Color del borde cuando está enfocado
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
           ),
-          filled: true, // Relleno activado
-          fillColor: Colors.white, // Color de fondo
+          filled: true,
+          fillColor: Colors.white,
         ),
       ),
       child: TextFormField(

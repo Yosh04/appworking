@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './widgets form/navigationPrev.dart';
 import './widgets form/inspectionForm.dart';
 import './widgets form/boatForm.dart';
+import './widgets form/motorForm.dart';
 
 class FormPage extends StatefulWidget {
   @override
@@ -79,10 +80,11 @@ class _FormPageState extends State<FormPage> {
                 initiallyExpanded: _isExpanded1,
                 children: [
                   SingleChildScrollView(
-                    child: FormularioWidget(),
+                    child: FormularioEmbarcacionWidget(),
                   ),
                 ],
               ),
+              SizedBox(height: 10.0),
             ],
           ),
         ),
