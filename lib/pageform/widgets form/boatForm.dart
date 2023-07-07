@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'motorForm.dart';
+import 'tripulationForm.dart';
+import '../formPage.dart';
 
 
 
@@ -16,6 +18,7 @@ class _FormularioEmbarcacionWidgetState
     extends State<FormularioEmbarcacionWidget> {
   int cantidadMotores = 0;
   int cantidadtripulacion = 0;
+  int cantidadpasajeros = 0;
   String? selectedShipType;
 
   @override
@@ -63,7 +66,7 @@ class _FormularioEmbarcacionWidgetState
             Divider(),
             _buildNumericFormFieldtripulacion("Tripulacion"),
             SizedBox(height: 16),
-            _buildNumericFormField("Pasajeros"),
+            _buildNumericFormFieldPasajeros("Pasajeros"),
             Divider(),
             _buildFormField("Actividad Al Momento Del Abordaje"),
             Divider(),
@@ -137,6 +140,43 @@ class _FormularioEmbarcacionWidgetState
         onChanged: (value) {
           setState(() {
             cantidadtripulacion = int.tryParse(value) ?? 0;
+            // getNumTripulacion(cantidadtripulacion);
+            getNumTripulacion(cantidadtripulacion + cantidadpasajeros);
+          });
+        },
+      ),
+    );
+  }
+
+  Widget _buildNumericFormFieldPasajeros(String label) {
+    return Theme(
+      data: ThemeData(
+        primaryColor: const Color(0xFF1C207F),
+        hintColor: const Color(0xFF1C207F),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
+          ),
+          filled: true,
+          fillColor: Colors.white,
+        ),
+      ),
+      child: TextFormField(
+        keyboardType: TextInputType.number,
+        decoration: InputDecoration(
+          labelText: label,
+        ),
+        inputFormatters: <TextInputFormatter>[
+          FilteringTextInputFormatter.digitsOnly,
+        ],
+        onChanged: (value) {
+          setState(() {
+            cantidadpasajeros = int.tryParse(value) ?? 0;
+            // getNumTripulacion(cantidadtripulacion);
+            getNumPasajeros(cantidadpasajeros + cantidadtripulacion);
           });
         },
       ),
