@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'motorForm.dart';
 
+
+
 class FormularioEmbarcacionWidget extends StatefulWidget {
+
+
   @override
   _FormularioEmbarcacionWidgetState createState() =>
       _FormularioEmbarcacionWidgetState();
@@ -13,6 +17,7 @@ class _FormularioEmbarcacionWidgetState
   int cantidadMotores = 0;
   int cantidadtripulacion = 0;
   String? selectedShipType;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -137,6 +142,7 @@ class _FormularioEmbarcacionWidgetState
       ),
     );
   }
+
 
   Widget _buildNumericFormField(String label) {
     return Theme(

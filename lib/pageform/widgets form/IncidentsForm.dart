@@ -1420,6 +1420,263 @@ class _IncidentsFormState extends State<IncidentsForm> {
         color: Colors.deepPurple,
       ),
       title: const Text(
+        'Búsqueda y Rescate',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+      ),
+      onExpansionChanged: (bool expanded) {
+        setState(() {
+          _isExpanded1 = expanded;
+        });
+      },
+      initiallyExpanded: _isExpanded1,
+      children: [
+        SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.black, // Color del borde
+                    width: 1.0, // Ancho del borde
+                  ),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: 48.0,
+                        padding: const EdgeInsets.all(8.0),
+                        color: Colors.grey,
+                        child: const Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'CODIGO DE INCIDENTE',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        height: 48.0,
+                        padding: const EdgeInsets.all(8.0),
+                        color: Colors.grey,
+                        child: const Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'DESCRIPCION',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        height: 48.0,
+                        padding: const EdgeInsets.all(8.0),
+                        color: Colors.grey,
+                        child: const Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'Seleccione',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('SAR1'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Búsqueda de Embarcación desaparecida'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isSAR1Checked, // Valor del checkbox
+                          onChanged: (value) {
+                            setState(() {
+                              _isSAR1Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('SAR2'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Búsqueda de persona desaparecida'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isSAR2Checked, // Valor del checkbox
+                          onChanged: (value) {
+                            setState(() {
+                              _isSAR2Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('SAR3'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Búsqueda de un cuerpo'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isSAR3Checked, // Valor del checkbox
+                          onChanged: (value) {
+                            setState(() {
+                              _isSAR3Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('SAR4'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Búsqueda de una Embarcación en naufragio'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isSAR4Checked, // Valor del checkbox
+                          onChanged: (value) {
+                            setState(() {
+                              _isSAR4Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget maritimeTraffic() {
+    return ExpansionTile(
+      collapsedBackgroundColor: Colors.black54,
+      backgroundColor: Colors.black26,
+      iconColor: Colors.deepPurple,
+      trailing: Icon(
+        _isExpanded1 ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+        color: Colors.deepPurple,
+      ),
+      title: const Text(
         'Delito Común',
         style: TextStyle(
           fontWeight: FontWeight.bold,
@@ -1838,219 +2095,7 @@ class _IncidentsFormState extends State<IncidentsForm> {
     );
   }
 
-  Widget maritimeTraffic() {
-    return ExpansionTile(
-      collapsedBackgroundColor: Colors.black54,
-      backgroundColor: Colors.black26,
-      iconColor: Colors.deepPurple,
-      trailing: Icon(
-        _isExpanded1 ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
-        color: Colors.deepPurple,
-      ),
-      title: const Text(
-        'Delito Común',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-        ),
-      ),
-      onExpansionChanged: (bool expanded) {
-        setState(() {
-          _isExpanded1 = expanded;
-        });
-      },
-      initiallyExpanded: _isExpanded1,
-      children: [
-        SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.black, // Color del borde
-                    width: 1.0, // Ancho del borde
-                  ),
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        height: 48.0,
-                        padding: const EdgeInsets.all(8.0),
-                        color: Colors.grey,
-                        child: const Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'CODIGO DE INCIDENTE',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 48.0,
-                        padding: const EdgeInsets.all(8.0),
-                        color: Colors.grey,
-                        child: const Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'DESCRIPCION',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 48.0,
-                        padding: const EdgeInsets.all(8.0),
-                        color: Colors.grey,
-                        child: const Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Seleccione',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('DC1'),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('Piratería (Asalto a una Embarcación)'),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Checkbox(
-                          value: _isDC1Checked, // Valor del checkbox
-                          onChanged: (value) {
-                            setState(() {
-                              _isDC1Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
-                            });
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('DC2'),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('Transporte de ilegales'),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Checkbox(
-                          value: _isDC2Checked, // Valor del checkbox
-                          onChanged: (value) {
-                            setState(() {
-                              _isDC2Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
-                            });
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('DC3'),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('Robos de productos, Embarcación , motores'),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Checkbox(
-                          value: _isDC3Checked, // Valor del checkbox
-                          onChanged: (value) {
-                            setState(() {
-                              _isDC3Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
-                            });
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
+
 
 
 
