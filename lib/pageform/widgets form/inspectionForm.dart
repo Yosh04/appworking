@@ -9,6 +9,14 @@ class _InspectionFormState extends State<InspectionForm> {
   DateTime currentDateSpecial = DateTime.now();
   TimeOfDay? startTime;
   TimeOfDay? endTime;
+  String? selectedEmbarcacionActuante;
+  TextEditingController coordinatesController = TextEditingController();
+
+  @override
+  void dispose() {
+    coordinatesController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +39,14 @@ class _InspectionFormState extends State<InspectionForm> {
                 endTime = time;
               });
             }),
+            SizedBox(height: 16),
+            _buildDropdown("Embarcación actuante", selectedEmbarcacionActuante, (value) {
+              setState(() {
+                selectedEmbarcacionActuante = value;
+              });
+            }, ["Patrulla propia", "Patrulla externa", "Patrulla conjunta"]),
+            SizedBox(height: 16),
+            _buildCoordinatesField(),
           ],
         ),
       ),
@@ -40,17 +56,17 @@ class _InspectionFormState extends State<InspectionForm> {
   Widget _buildFormField(String label) {
     return Theme(
       data: ThemeData(
-        primaryColor: const Color(0xFF1C207F), // Color del texto y el borde
-        hintColor: const Color(0xFF1C207F), // Color del texto de sugerencia
+        primaryColor: const Color(0xFF1C207F),
+        hintColor: const Color(0xFF1C207F),
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
-            borderSide: BorderSide(color: const Color(0xFF1C207F)), // Color del borde
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: const Color(0xFF1C207F)), // Color del borde cuando está enfocado
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
           ),
-          filled: true, // Relleno activado
-          fillColor: Colors.white, // Color de fondo
+          filled: true,
+          fillColor: Colors.white,
         ),
       ),
       child: Container(
@@ -72,17 +88,17 @@ class _InspectionFormState extends State<InspectionForm> {
       String label, TimeOfDay? selectedTime, Function(TimeOfDay) onTimeSelected) {
     return Theme(
       data: ThemeData(
-        primaryColor: const Color(0xFF1C207F), // Color del texto y el borde
-        hintColor: const Color(0xFF1C207F), // Color del texto de sugerencia
+        primaryColor: const Color(0xFF1C207F),
+        hintColor: const Color(0xFF1C207F),
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
-            borderSide: BorderSide(color: const Color(0xFF1C207F)), // Color del borde
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: const Color(0xFF1C207F)), // Color del borde cuando está enfocado
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
           ),
-          filled: true, // Relleno activado
-          fillColor: Colors.white, // Color de fondo
+          filled: true,
+          fillColor: Colors.white,
         ),
       ),
       child: SizedBox(
@@ -92,10 +108,11 @@ class _InspectionFormState extends State<InspectionForm> {
             _selectTime(selectedTime, onTimeSelected);
           },
           child: Container(
-            height: 60, // Ajusta la altura según tus necesidades
+            height: 60,
             decoration: BoxDecoration(
               border: Border.all(),
               borderRadius: BorderRadius.circular(4.0),
+              color: Colors.white,
             ),
             child: Row(
               children: [
@@ -110,6 +127,94 @@ class _InspectionFormState extends State<InspectionForm> {
                 ),
                 Text(selectedTime?.format(context) ?? ''),
               ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDropdown(String label, String? selectedValue, Function(String?) onChanged, List<String> options) {
+    return Theme(
+      data: ThemeData(
+        primaryColor: const Color(0xFF1C207F),
+        hintColor: const Color(0xFF1C207F),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
+          ),
+          filled: true,
+          fillColor: Colors.white,
+        ),
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(),
+          borderRadius: BorderRadius.circular(4.0),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 0),
+          child: Column(
+            children: [
+              DropdownButtonFormField<String>(
+                decoration: InputDecoration(
+                  labelText: label,
+                  border: InputBorder.none,
+                ),
+                value: selectedValue,
+                onChanged: onChanged,
+                items: options.map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+              TextFormField(
+                controller: coordinatesController,
+                decoration: InputDecoration(
+                  labelText: 'Coordenadas',
+                  border: InputBorder.none,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCoordinatesField() {
+    return Theme(
+      data: ThemeData(
+        primaryColor: const Color(0xFF1C207F),
+        hintColor: const Color(0xFF1C207F),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
+          ),
+          filled: true,
+          fillColor: Colors.white,
+        ),
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(),
+          borderRadius: BorderRadius.circular(4.0),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 0),
+          child: TextFormField(
+            controller: coordinatesController,
+            decoration: InputDecoration(
+              labelText: 'Coordenadas',
+              border: InputBorder.none,
             ),
           ),
         ),
