@@ -87,27 +87,30 @@ class _InspectionFormState extends State<InspectionForm> {
       ),
       child: SizedBox(
         width: double.infinity,
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(),
-            borderRadius: BorderRadius.circular(4.0),
-          ),
-          child: Row(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                  child: Text(
-                    label,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+        child: GestureDetector(
+          onTap: () {
+            _selectTime(selectedTime, onTimeSelected);
+          },
+          child: Container(
+            height: 60, // Ajusta la altura según tus necesidades
+            decoration: BoxDecoration(
+              border: Border.all(),
+              borderRadius: BorderRadius.circular(4.0),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Text(
+                      label,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
-              ),
-              ElevatedButton(
-                onPressed: () => _selectTime(selectedTime, onTimeSelected),
-                child: Text(selectedTime?.format(context) ?? 'Seleccionar'),
-              ),
-            ],
+                Text(selectedTime?.format(context) ?? ''),
+              ],
+            ),
           ),
         ),
       ),
