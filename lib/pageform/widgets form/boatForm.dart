@@ -4,11 +4,7 @@ import 'motorForm.dart';
 import 'tripulationForm.dart';
 import '../formPage.dart';
 
-
-
 class FormularioEmbarcacionWidget extends StatefulWidget {
-
-
   @override
   _FormularioEmbarcacionWidgetState createState() =>
       _FormularioEmbarcacionWidgetState();
@@ -20,7 +16,6 @@ class _FormularioEmbarcacionWidgetState
   int cantidadtripulacion = 0;
   int cantidadpasajeros = 0;
   String? selectedShipType;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -54,11 +49,11 @@ class _FormularioEmbarcacionWidgetState
             _buildFormField("Equipo De Navegacion"),
             SizedBox(height: 16),
             _buildDropdown("Selccione material del barco", selectedShipType,
-                (value) {
-              setState(() {
-                selectedShipType = value;
-              });
-            }, ["Madera", "Metal", "Concreto", "Fibra de vidrio"]),
+                    (value) {
+                  setState(() {
+                    selectedShipType = value;
+                  });
+                }, ["Madera", "Metal", "Concreto", "Fibra de vidrio"]),
             SizedBox(height: 16),
             _buildFormField("Color de Casco"),
             SizedBox(height: 16),
@@ -183,7 +178,6 @@ class _FormularioEmbarcacionWidgetState
     );
   }
 
-
   Widget _buildNumericFormField(String label) {
     return Theme(
       data: ThemeData(
@@ -192,7 +186,7 @@ class _FormularioEmbarcacionWidgetState
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
             borderSide:
-                BorderSide(color: const Color(0xFF1C207F)), // Color del borde
+            BorderSide(color: const Color(0xFF1C207F)), // Color del borde
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(

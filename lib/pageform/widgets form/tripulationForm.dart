@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import './boatForm.dart';
 
-late int Ntripulacion = 1;
-late int NPasajeros = 1;
+late int Ntripulacion = 0;
+late int NPasajeros = 0;
+
 void getNumTripulacion(int b) {
   Ntripulacion = b;
 }
@@ -34,7 +35,7 @@ class _TripulacionFormularioWidgetState
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: List.generate(
             widget.cantidadTripulacion,
-            (index) => _buildTripulanteFormField(index + 1),
+                (index) => _buildTripulanteFormField(index + 1),
           ),
         ),
       ),
@@ -74,7 +75,7 @@ class _TripulacionFormularioWidgetState
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
             borderSide:
-                BorderSide(color: const Color(0xFF1C207F)), // Color del borde
+            BorderSide(color: const Color(0xFF1C207F)), // Color del borde
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(

@@ -10,15 +10,6 @@ class FormPage extends StatefulWidget {
   _FormPageState createState() => _FormPageState();
 }
 
-
-late final int Ntripulacion;
-
-void getNumTripulacion( int b){
-  Ntripulacion =b;
-}
-
-
-
 class _FormPageState extends State<FormPage> {
   bool _isExpanded1 = false;
   List<dynamic> _formValuesInspection = [];
