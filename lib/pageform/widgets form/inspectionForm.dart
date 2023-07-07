@@ -11,10 +11,21 @@ class _InspectionFormState extends State<InspectionForm> {
   TimeOfDay? endTime;
   String? selectedEmbarcacionActuante;
   TextEditingController coordinatesController = TextEditingController();
+  TextEditingController positionController = TextEditingController();
+  TextEditingController boardedVesselController = TextEditingController();
+  TextEditingController matriculaController = TextEditingController();
+  TextEditingController matriculaController1 = TextEditingController();
+
+
 
   @override
   void dispose() {
     coordinatesController.dispose();
+    positionController.dispose();
+    boardedVesselController.dispose();
+    matriculaController.dispose();
+    matriculaController1.dispose();
+
     super.dispose();
   }
 
@@ -46,7 +57,13 @@ class _InspectionFormState extends State<InspectionForm> {
               });
             }, ["Patrulla propia", "Patrulla externa", "Patrulla conjunta"]),
             SizedBox(height: 16),
-            _buildCoordinatesField(),
+            _buildTextField("Posición", positionController),
+            SizedBox(height: 16),
+            _buildTextField("Embarcación abordada", boardedVesselController),
+            SizedBox(height: 16),
+            _buildTextField("Matrícula", matriculaController),
+            SizedBox(height: 16),
+            _buildTextField("Matrícula", matriculaController1),
           ],
         ),
       ),
@@ -157,37 +174,26 @@ class _InspectionFormState extends State<InspectionForm> {
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 0),
-          child: Column(
-            children: [
-              DropdownButtonFormField<String>(
-                decoration: InputDecoration(
-                  labelText: label,
-                  border: InputBorder.none,
-                ),
-                value: selectedValue,
-                onChanged: onChanged,
-                items: options.map((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-              ),
-              TextFormField(
-                controller: coordinatesController,
-                decoration: InputDecoration(
-                  labelText: 'Coordenadas',
-                  border: InputBorder.none,
-                ),
-              ),
-            ],
+          child: DropdownButtonFormField<String>(
+            decoration: InputDecoration(
+              labelText: label,
+              border: InputBorder.none,
+            ),
+            value: selectedValue,
+            onChanged: onChanged,
+            items: options.map((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
           ),
         ),
       ),
     );
   }
 
-  Widget _buildCoordinatesField() {
+  Widget _buildTextField(String label, TextEditingController controller) {
     return Theme(
       data: ThemeData(
         primaryColor: const Color(0xFF1C207F),
@@ -211,9 +217,9 @@ class _InspectionFormState extends State<InspectionForm> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 0),
           child: TextFormField(
-            controller: coordinatesController,
+            controller: controller,
             decoration: InputDecoration(
-              labelText: 'Coordenadas',
+              labelText: label,
               border: InputBorder.none,
             ),
           ),
