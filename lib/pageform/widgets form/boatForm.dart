@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'motorForm.dart';
 
-class FormularioWidget extends StatelessWidget {
+class FormularioEmbarcacionWidget extends StatefulWidget {
+  @override
+  _FormularioEmbarcacionWidgetState createState() =>
+      _FormularioEmbarcacionWidgetState();
+}
+
+class _FormularioEmbarcacionWidgetState
+    extends State<FormularioEmbarcacionWidget> {
+  int cantidadMotores = 0;
+  int cantidadtripulacion = 0;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,7 +29,7 @@ class FormularioWidget extends StatelessWidget {
             SizedBox(height: 16),
             _buildFormField("Capacidad Tanq. Agua"),
             SizedBox(height: 16),
-            _buildNumericFormField("Cantidad de Motores"),
+            _buildNumericFormFieldMotors("Cantidad de Motores"),
             Divider(),
             _buildFormField("Eslora"),
             SizedBox(height: 16),
@@ -34,21 +45,90 @@ class FormularioWidget extends StatelessWidget {
             Divider(),
             _buildFormField("Equipo De Navegacion"),
             SizedBox(height: 16),
-            ToggleBox(), // Reemplaza _buildFormField("Material") por ToggleBox()
+            ToggleBox(),
             SizedBox(height: 16),
             _buildFormField("Color de Casco"),
             SizedBox(height: 16),
             _buildFormField("Características Generales De La Embarcacion"),
             Divider(),
-            _buildNumericFormField("Tripulacion"),
+            _buildNumericFormFieldtripulacion("Tripulacion"),
             SizedBox(height: 16),
             _buildNumericFormField("Pasajeros"),
             Divider(),
             _buildFormField("Actividad Al Momento Del Abordaje"),
             Divider(),
             _buildFormField("Bitacora De La Embarcación"),
+            SingleChildScrollView(
+              child: MotorFormularioWidget(cantidadMotores: cantidadMotores),
+            ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildNumericFormFieldMotors(String label) {
+    return Theme(
+      data: ThemeData(
+        primaryColor: const Color(0xFF1C207F),
+        hintColor: const Color(0xFF1C207F),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
+          ),
+          filled: true,
+          fillColor: Colors.white,
+        ),
+      ),
+      child: TextFormField(
+        keyboardType: TextInputType.number,
+        decoration: InputDecoration(
+          labelText: label,
+        ),
+        inputFormatters: <TextInputFormatter>[
+          FilteringTextInputFormatter.digitsOnly,
+        ],
+        onChanged: (value) {
+          setState(() {
+            cantidadMotores = int.tryParse(value) ?? 0;
+          });
+        },
+      ),
+    );
+  }
+
+  Widget _buildNumericFormFieldtripulacion(String label) {
+    return Theme(
+      data: ThemeData(
+        primaryColor: const Color(0xFF1C207F),
+        hintColor: const Color(0xFF1C207F),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
+          ),
+          filled: true,
+          fillColor: Colors.white,
+        ),
+      ),
+      child: TextFormField(
+        keyboardType: TextInputType.number,
+        decoration: InputDecoration(
+          labelText: label,
+        ),
+        inputFormatters: <TextInputFormatter>[
+          FilteringTextInputFormatter.digitsOnly,
+        ],
+        onChanged: (value) {
+          setState(() {
+            cantidadtripulacion = int.tryParse(value) ?? 0;
+          });
+        },
       ),
     );
   }
@@ -88,20 +168,17 @@ class FormularioWidget extends StatelessWidget {
   Widget _buildFormField(String label) {
     return Theme(
       data: ThemeData(
-        primaryColor: const Color(0xFF1C207F), // Color del texto y el borde
-        hintColor: const Color(0xFF1C207F), // Color del texto de sugerencia
+        primaryColor: const Color(0xFF1C207F),
+        hintColor: const Color(0xFF1C207F),
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: const Color(0xFF1C207F)), // Color del borde
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-                color: const Color(
-                    0xFF1C207F)), // Color del borde cuando está enfocado
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
           ),
-          filled: true, // Relleno activado
-          fillColor: Colors.white, // Color de fondo
+          filled: true,
+          fillColor: Colors.white,
         ),
       ),
       child: TextFormField(
