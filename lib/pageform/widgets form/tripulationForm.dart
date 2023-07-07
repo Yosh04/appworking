@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import './boatForm.dart';
 
-late int Ntripulacion = 1;
-late int NPasajeros = 1;
+late int Ntripulacion = 0;
+late int NPasajeros = 0;
 void getNumTripulacion(int b) {
   Ntripulacion = b;
 }
