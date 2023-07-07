@@ -121,14 +121,14 @@ class _InspectionFormState extends State<InspectionForm> {
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 alignment: Alignment.centerLeft,
               ),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 8.0), // Agregar padding a la izquierda
+              child: const Padding(
+                padding: EdgeInsets.only(left: 8.0), // Agregar padding a la izquierda
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'Seleccionar fecha',
                     style: TextStyle(
-                      color: const Color(0xFF1C207F), // Cambiar color de letras
+                      color: Color(0xFF1C207F), // Cambiar color de letras
                       fontWeight: FontWeight.normal,
                     ),
                   ),
