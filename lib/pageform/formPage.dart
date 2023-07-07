@@ -5,7 +5,6 @@ import './widgets form/boatForm.dart';
 import './widgets form/ownerForm.dart';
 import './widgets form/IncidentsForm.dart';
 
-
 class FormPage extends StatefulWidget {
   @override
   _FormPageState createState() => _FormPageState();
@@ -110,10 +109,11 @@ class _FormPageState extends State<FormPage> {
                 initiallyExpanded: _isExpanded1,
                 children: [
                   SingleChildScrollView(
-                    child: TripulacionFormularioWidget(cantidadTripulacion: 2),
+                    child: TripulacionFormularioWidget(),
                   ),
                 ],
-              ), SizedBox(height: 10.0),
+              ),
+              SizedBox(height: 10.0),
               ExpansionTile(
                 collapsedBackgroundColor: Colors.black54,
                 backgroundColor: Colors.black26,

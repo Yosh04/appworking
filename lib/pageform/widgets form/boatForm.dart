@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'motorForm.dart';
+import './ownerForm.dart';
+import '../formPage.dart';
 
 class FormularioEmbarcacionWidget extends StatefulWidget {
   @override
@@ -132,6 +134,8 @@ class _FormularioEmbarcacionWidgetState
         onChanged: (value) {
           setState(() {
             cantidadtripulacion = int.tryParse(value) ?? 0;
+            // getNumTripulacion(cantidadtripulacion);
+            getNumTripulacion(cantidadtripulacion);
           });
         },
       ),

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import './boatForm.dart';
+
+late int Ntripulacion = 0;
+void getNumTripulacion(int b) {
+  Ntripulacion = b;
+}
 
 class TripulacionFormularioWidget extends StatefulWidget {
-  final int cantidadTripulacion;
-
-  TripulacionFormularioWidget({required this.cantidadTripulacion});
+  final int cantidadTripulacion = Ntripulacion;
 
   @override
   _TripulacionFormularioWidgetState createState() =>
