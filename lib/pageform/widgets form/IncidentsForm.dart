@@ -1244,6 +1244,48 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
+                        child: Text('RN 12-2'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 110.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Pesca Ilegal, áreas protegidas'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isRN12_2Checked, // Valor del checkbox
+                          onChanged: (value) {
+                            setState(() {
+                              _isRN12_2Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
                         child: Text('RN 12-3'),
                       ),
                     ),
@@ -1286,7 +1328,7 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('RN 12-2'),
+                        child: Text('RN 12-4'),
                       ),
                     ),
                   ),
@@ -1296,7 +1338,7 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Pesca Ilegal, áreas protegidas'),
+                        child: Text('Pesca Ilegal, especies protegidas'),
                       ),
                     ),
                   ),
@@ -1307,10 +1349,52 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       child: Align(
                         alignment: Alignment.center,
                         child: Checkbox(
-                          value: _isRN12_2Checked, // Valor del checkbox
+                          value: _isRN12_4Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isRN12_2Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isRN12_4Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('RN 12-6'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 110.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Canon de licencia de pesca vencido'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isRN12_6Checked, // Valor del checkbox
+                          onChanged: (value) {
+                            setState(() {
+                              _isRN12_6Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
