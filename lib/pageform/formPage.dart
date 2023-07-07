@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import './widgets form/navigationPrev.dart';
 import './widgets form/inspectionForm.dart';
 import './widgets form/boatForm.dart';
-import './widgets form/ownerForm.dart';
+import 'widgets form/tripulationForm.dart';
 import './widgets form/IncidentsForm.dart';
 
 class FormPage extends StatefulWidget {
