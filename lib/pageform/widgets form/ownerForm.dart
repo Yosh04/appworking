@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 
-class TripulacionFormularioWidget extends StatelessWidget {
+class TripulacionFormularioWidget extends StatefulWidget {
   final int cantidadTripulacion;
 
   TripulacionFormularioWidget({required this.cantidadTripulacion});
+
+  @override
+  _TripulacionFormularioWidgetState createState() =>
+      _TripulacionFormularioWidgetState();
+}
+
+class _TripulacionFormularioWidgetState
+    extends State<TripulacionFormularioWidget> {
+  String? selectedShipType;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +22,7 @@ class TripulacionFormularioWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: List.generate(
-            cantidadTripulacion,
+            widget.cantidadTripulacion,
             (index) => _buildTripulanteFormField(index + 1),
           ),
         ),
@@ -36,7 +45,11 @@ class TripulacionFormularioWidget extends StatelessWidget {
         SizedBox(height: 16),
         _buildFormField('Carnet de Pesca/Número de Teléfono'),
         SizedBox(height: 16),
-        _buildFormField('Clasificación'),
+        _buildDropdown("Clasificacion", selectedShipType, (value) {
+          setState(() {
+            selectedShipType = value;
+          });
+        }, ["Pasajero", "Tripulante"]),
         Divider(),
       ],
     );
@@ -64,6 +77,49 @@ class TripulacionFormularioWidget extends StatelessWidget {
       child: TextFormField(
         decoration: InputDecoration(
           labelText: label,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDropdown(String label, String? selectedValue,
+      Function(String?) onChanged, List<String> options) {
+    return Theme(
+      data: ThemeData(
+        primaryColor: const Color(0xFF1C207F),
+        hintColor: const Color(0xFF1C207F),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
+          ),
+          filled: true,
+          fillColor: Colors.white,
+        ),
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(),
+          borderRadius: BorderRadius.circular(4.0),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 0),
+          child: DropdownButtonFormField<String>(
+            decoration: InputDecoration(
+              labelText: label,
+              border: InputBorder.none,
+            ),
+            value: selectedValue,
+            onChanged: onChanged,
+            items: options.map((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+          ),
         ),
       ),
     );

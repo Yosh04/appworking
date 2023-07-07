@@ -12,7 +12,7 @@ class _FormularioEmbarcacionWidgetState
     extends State<FormularioEmbarcacionWidget> {
   int cantidadMotores = 0;
   int cantidadtripulacion = 0;
-
+  String? selectedShipType;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -45,7 +45,12 @@ class _FormularioEmbarcacionWidgetState
             Divider(),
             _buildFormField("Equipo De Navegacion"),
             SizedBox(height: 16),
-            ToggleBox(),
+            _buildDropdown("Selccione material del barco", selectedShipType,
+                (value) {
+              setState(() {
+                selectedShipType = value;
+              });
+            }, ["Madera", "Metal", "Concreto", "Fibra de vidrio"]),
             SizedBox(height: 16),
             _buildFormField("Color de Casco"),
             SizedBox(height: 16),
@@ -251,4 +256,47 @@ class _ToggleBoxState extends State<ToggleBox> {
       ],
     );
   }
+}
+
+Widget _buildDropdown(String label, String? selectedValue,
+    Function(String?) onChanged, List<String> options) {
+  return Theme(
+    data: ThemeData(
+      primaryColor: const Color(0xFF1C207F),
+      hintColor: const Color(0xFF1C207F),
+      inputDecorationTheme: InputDecorationTheme(
+        border: OutlineInputBorder(
+          borderSide: BorderSide(color: const Color(0xFF1C207F)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: const Color(0xFF1C207F)),
+        ),
+        filled: true,
+        fillColor: Colors.white,
+      ),
+    ),
+    child: Container(
+      decoration: BoxDecoration(
+        border: Border.all(),
+        borderRadius: BorderRadius.circular(4.0),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 0),
+        child: DropdownButtonFormField<String>(
+          decoration: InputDecoration(
+            labelText: label,
+            border: InputBorder.none,
+          ),
+          value: selectedValue,
+          onChanged: onChanged,
+          items: options.map((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
+        ),
+      ),
+    ),
+  );
 }
