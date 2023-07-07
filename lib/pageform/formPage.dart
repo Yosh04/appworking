@@ -52,13 +52,7 @@ class _FormPageState extends State<FormPage> {
                 },
                 initiallyExpanded: _isExpanded1,
                 children: [
-                  InspectionForm(
-                    onFormValuesChanged: (values) {
-                      setState(() {
-                        _formValuesInspection.addAll(values);
-                      });
-                    },
-                  ),
+                  InspectionForm(),
                 ],
               ),
               SizedBox(height: 10.0),
