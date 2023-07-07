@@ -27,32 +27,21 @@ class _FormPageState extends State<FormPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(
-              height: 50,
-              color: Colors.white,
-              child: const Center(
-                child: Text(
-                  'Documentos Recientes',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Color(0xFF1C207F),
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
             const SizedBox(height: 10),
             ExpansionTile(
               collapsedBackgroundColor: Colors.black54,
               backgroundColor: Colors.black26,
               iconColor: Colors.deepPurple,
               trailing: Icon(
-                _isExpanded1 ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+                _isExpanded1
+                    ? Icons.keyboard_arrow_up
+                    : Icons.keyboard_arrow_down,
                 color: Colors.deepPurple,
               ),
               title: const Text(
                 'Datos de inspección',
-                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
               ),
               onExpansionChanged: (bool expanded) {
                 setState(() {
