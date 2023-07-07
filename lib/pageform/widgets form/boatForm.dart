@@ -34,6 +34,12 @@ class FormularioWidget extends StatelessWidget {
             Divider(),
             _buildFormField("Equipo De Navegacion"),
             SizedBox(height: 16),
+            ToggleBox(), // Reemplaza _buildFormField("Material") por ToggleBox()
+            SizedBox(height: 16),
+            _buildFormField("Color de Casco"),
+            SizedBox(height: 16),
+            _buildFormField("Características Generales De La Embarcacion"),
+            Divider(),
             _buildNumericFormField("Tripulacion"),
             SizedBox(height: 16),
             _buildNumericFormField("Pasajeros"),
