@@ -14,6 +14,8 @@ class _FormPageState extends State<FormPage> {
   bool _isExpanded1 = false;
   List<dynamic> _formValuesInspection = [];
 
+  int? numeroDefinitivoTripulacion =Ntripulacion ;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -154,4 +156,8 @@ class _FormPageState extends State<FormPage> {
       ),
     );
   }
+
+
 }
+
+

@@ -3,6 +3,7 @@ import './boatForm.dart';
 
 late int Ntripulacion = 0;
 late int NPasajeros = 0;
+
 void getNumTripulacion(int b) {
   Ntripulacion = b;
 }

@@ -49,11 +49,11 @@ class _FormularioEmbarcacionWidgetState
             _buildFormField("Equipo De Navegacion"),
             SizedBox(height: 16),
             _buildDropdown("Selccione material del barco", selectedShipType,
-                (value) {
-              setState(() {
-                selectedShipType = value;
-              });
-            }, ["Madera", "Metal", "Concreto", "Fibra de vidrio"]),
+                    (value) {
+                  setState(() {
+                    selectedShipType = value;
+                  });
+                }, ["Madera", "Metal", "Concreto", "Fibra de vidrio"]),
             SizedBox(height: 16),
             _buildFormField("Color de Casco"),
             SizedBox(height: 16),
@@ -186,7 +186,7 @@ class _FormularioEmbarcacionWidgetState
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
             borderSide:
-                BorderSide(color: const Color(0xFF1C207F)), // Color del borde
+            BorderSide(color: const Color(0xFF1C207F)), // Color del borde
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(

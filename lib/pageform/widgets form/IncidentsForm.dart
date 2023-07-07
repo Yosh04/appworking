@@ -12,7 +12,6 @@ class _IncidentsFormState extends State<IncidentsForm> {
   bool _isDC2Checked = false;
   bool _isDC3Checked = false;
 
-
   // Var for the state of checkbox Narcotics.
   bool _isN1Checked = false;
   bool _isN2Checked = false;
@@ -39,7 +38,6 @@ class _IncidentsFormState extends State<IncidentsForm> {
   bool _isRN12_4Checked = false;
   bool _isRN12_5Checked = false;
   bool _isRN12_6Checked = false;
-
 
   // Var for the state of checkbox Search and Rescue.
   bool _isSAR1Checked = false;
@@ -85,10 +83,9 @@ class _IncidentsFormState extends State<IncidentsForm> {
             const SizedBox(height: 10.0),
             searchRescue(),
             const SizedBox(height: 10.0),
-            beachSecurity(),
-            const SizedBox(height: 10.0),
             maritimeTraffic(),
-
+            const SizedBox(height: 10.0),
+            beachSecurity(),
           ],
         ),
       ),
@@ -209,7 +206,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isDC1Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isDC1Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isDC1Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -251,7 +249,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isDC2Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isDC2Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isDC2Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -279,7 +278,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Robos de productos, Embarcación , motores'),
+                        child:
+                            Text('Robos de productos, Embarcación , motores'),
                       ),
                     ),
                   ),
@@ -293,7 +293,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isDC3Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isDC3Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isDC3Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -409,7 +410,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Embarcación encallada que  transporta droga'),
+                        child:
+                            Text('Embarcación encallada que  transporta droga'),
                       ),
                     ),
                   ),
@@ -423,7 +425,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isN1Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isN1Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isN1Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -451,7 +454,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Intercepción de una embarcación con droga'),
+                        child:
+                            Text('Intercepción de una embarcación con droga'),
                       ),
                     ),
                   ),
@@ -465,7 +469,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isN2Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isN2Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isN2Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -507,7 +512,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isN3Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isN3Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isN3Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -549,7 +555,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isN4Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isN4Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isN4Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -591,7 +598,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isN5Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isN5Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isN5Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -633,7 +641,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isN6Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isN6Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isN6Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -642,7 +651,6 @@ class _IncidentsFormState extends State<IncidentsForm> {
                   ),
                 ],
               ),
-
             ],
           ),
         ),
@@ -764,7 +772,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isRN1Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isRN1Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isRN1Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -806,7 +815,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isRN2Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isRN2Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isRN2Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -848,7 +858,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isRN3Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isRN3Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isRN3Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -890,7 +901,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isRN4Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isRN4Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isRN4Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -918,7 +930,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Levantamiento de artes de pesca (Trasmallos, líneas, rastras, etc.)	'),
+                        child: Text(
+                            'Levantamiento de artes de pesca (Trasmallos, líneas, rastras, etc.)	'),
                       ),
                     ),
                   ),
@@ -932,7 +945,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isRN5Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isRN5Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isRN5Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -960,7 +974,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Caza de tortugas y extracción de huevos, extracción de nidos'),
+                        child: Text(
+                            'Caza de tortugas y extracción de huevos, extracción de nidos'),
                       ),
                     ),
                   ),
@@ -974,7 +989,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isRN6Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isRN6Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isRN6Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -1002,7 +1018,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Cacería Ilegal (EXCEPTO LO RELACIONADO A TORTUGAS MARINAS)'),
+                        child: Text(
+                            'Cacería Ilegal (EXCEPTO LO RELACIONADO A TORTUGAS MARINAS)'),
                       ),
                     ),
                   ),
@@ -1016,7 +1033,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isRN7Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isRN7Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isRN7Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -1058,7 +1076,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isRN8Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isRN8Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isRN8Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -1100,7 +1119,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isRN9Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isRN9Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isRN9Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -1142,7 +1162,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isRN10Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isRN10Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isRN10Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -1170,7 +1191,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Embarcación SIN Licencia de Pesca (PESCA ILEGAL)'),
+                        child: Text(
+                            'Embarcación SIN Licencia de Pesca (PESCA ILEGAL)'),
                       ),
                     ),
                   ),
@@ -1184,7 +1206,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isRN11Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isRN11Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isRN11Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -1226,7 +1249,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isRN12_1Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isRN12_1Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isRN12_1Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -1268,7 +1292,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isRN12_2Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isRN12_2Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isRN12_2Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -1310,7 +1335,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isRN12_3Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isRN12_3Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isRN12_3Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -1352,7 +1378,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isRN12_4Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isRN12_4Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isRN12_4Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -1394,7 +1421,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isRN12_6Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isRN12_6Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isRN12_6Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -1420,7 +1448,7 @@ class _IncidentsFormState extends State<IncidentsForm> {
         color: Colors.deepPurple,
       ),
       title: const Text(
-        'Delito Común',
+        'Búsqueda y Rescate',
         style: TextStyle(
           fontWeight: FontWeight.bold,
           color: Colors.white,
@@ -1500,17 +1528,17 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('DC1'),
+                        child: Text('SAR1'),
                       ),
                     ),
                   ),
                   Expanded(
                     child: Container(
-                      height: 48.0,
+                      height: 78.0,
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Piratería (Asalto a una Embarcación)'),
+                        child: Text('Búsqueda de Embarcación desaparecida'),
                       ),
                     ),
                   ),
@@ -1521,10 +1549,11 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       child: Align(
                         alignment: Alignment.center,
                         child: Checkbox(
-                          value: _isDC1Checked, // Valor del checkbox
+                          value: _isSAR1Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isDC1Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isSAR1Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -1542,17 +1571,17 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('DC2'),
+                        child: Text('SAR2'),
                       ),
                     ),
                   ),
                   Expanded(
                     child: Container(
-                      height: 48.0,
+                      height: 78.0,
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Transporte de ilegales'),
+                        child: Text('Búsqueda de persona desaparecida'),
                       ),
                     ),
                   ),
@@ -1563,10 +1592,11 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       child: Align(
                         alignment: Alignment.center,
                         child: Checkbox(
-                          value: _isDC2Checked, // Valor del checkbox
+                          value: _isSAR2Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isDC2Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isSAR2Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -1584,17 +1614,17 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('DC3'),
+                        child: Text('SAR3'),
                       ),
                     ),
                   ),
                   Expanded(
                     child: Container(
-                      height: 48.0,
+                      height: 78.0,
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Robos de productos, Embarcación , motores'),
+                        child: Text('Búsqueda de un cuerpo'),
                       ),
                     ),
                   ),
@@ -1605,10 +1635,11 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       child: Align(
                         alignment: Alignment.center,
                         child: Checkbox(
-                          value: _isDC3Checked, // Valor del checkbox
+                          value: _isSAR3Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isDC3Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isSAR3Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -1617,6 +1648,846 @@ class _IncidentsFormState extends State<IncidentsForm> {
                   ),
                 ],
               ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('SAR4'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 78.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Búsqueda de una Embarcación en naufragio'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isSAR4Checked, // Valor del checkbox
+                          onChanged: (value) {
+                            setState(() {
+                              _isSAR4Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget maritimeTraffic() {
+    return ExpansionTile(
+      collapsedBackgroundColor: Colors.black54,
+      backgroundColor: Colors.black26,
+      iconColor: Colors.deepPurple,
+      trailing: Icon(
+        _isExpanded1 ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+        color: Colors.deepPurple,
+      ),
+      title: const Text(
+        'Tráfico Marítimo',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+      ),
+      onExpansionChanged: (bool expanded) {
+        setState(() {
+          _isExpanded1 = expanded;
+        });
+      },
+      initiallyExpanded: _isExpanded1,
+      children: [
+        SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.black, // Color del borde
+                    width: 1.0, // Ancho del borde
+                  ),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: 48.0,
+                        padding: const EdgeInsets.all(8.0),
+                        color: Colors.grey,
+                        child: const Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'CODIGO DE INCIDENTE',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        height: 48.0,
+                        padding: const EdgeInsets.all(8.0),
+                        color: Colors.grey,
+                        child: const Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'DESCRIPCION',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        height: 48.0,
+                        padding: const EdgeInsets.all(8.0),
+                        color: Colors.grey,
+                        child: const Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'Seleccione',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              // Fila 1: TM1
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('TM1'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 78.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child:
+                            Text('Embarcación CON documentos al día (TODOS)'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isTM1Checked,
+                          onChanged: (value) {
+                            setState(() {
+                              _isTM1Checked = value ?? false;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              // Fila 2: TM2
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('TM2'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 78.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Embarcación SIN documento (NINGUNO)'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isTM2Checked,
+                          onChanged: (value) {
+                            setState(() {
+                              _isTM2Checked = value ?? false;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              // Fila 3: TM2-1
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('TM2-1'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 78.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Embarcación SIN Título de Propiedad'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isTM2_1Checked,
+                          onChanged: (value) {
+                            setState(() {
+                              _isTM2_1Checked = value ?? false;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('TM2-2'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 78.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                            'Embarcación SIN Certificado de Navegabilidad'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isTM2_2Checked,
+                          onChanged: (value) {
+                            setState(() {
+                              _isTM2_2Checked = value ?? false;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+          // Fila 5: TM2-3
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('TM2-3'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 78.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                            'Embarcación SIN Permiso para transporte de Turismo'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isTM2_3Checked,
+                          onChanged: (value) {
+                            setState(() {
+                              _isTM2_3Checked = value ?? false;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+          // Fila 6: TM2-4
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('TM2-4'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 88.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                            'Embarcación SIN Permiso para transporte de Carga'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isTM2_4Checked,
+                          onChanged: (value) {
+                            setState(() {
+                              _isTM2_4Checked = value ?? false;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              // Fila 7: TM3
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('TM3'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 78.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child:
+                            Text('Embarcación con documentos vencidos (TODOS)'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isTM3Checked,
+                          onChanged: (value) {
+                            setState(() {
+                              _isTM3Checked = value ?? false;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('TM3-1'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 78.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child:
+                        Text('Embarcación  Certificado de Matrícula VENCIDOS'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isTM3_1Checked,
+                          onChanged: (value) {
+                            setState(() {
+                              _isTM3_1Checked = value ?? false;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('TM3-2'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 78.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child:
+                        Text('Embarcación  Certificado de Navegabilidad VENCIDOS'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isTM3_2Checked,
+                          onChanged: (value) {
+                            setState(() {
+                              _isTM3_2Checked = value ?? false;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              // Fila 4: TM3-3
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('TM3-3'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 78.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Embarcación Licencia de Pesca VENCIDOS'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isTM3_3Checked,
+                          onChanged: (value) {
+                            setState(() {
+                              _isTM3_3Checked = value ?? false;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+// Fila 5: TM3-4
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('TM3-4'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 98.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Embarcación Permiso para transporte de Turismos VENCIDOS'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isTM3_4Checked,
+                          onChanged: (value) {
+                            setState(() {
+                              _isTM3_4Checked = value ?? false;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+// Fila 6: TM3-5
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('TM3-5'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 78.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Embarcación Permiso para transporte de Carga VENCIDOS'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isTM3_5Checked,
+                          onChanged: (value) {
+                            setState(() {
+                              _isTM3_5Checked = value ?? false;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+// Fila 7: TM4
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('TM4'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 78.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('CON Zarpe'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isTM4Checked,
+                          onChanged: (value) {
+                            setState(() {
+                              _isTM4Checked = value ?? false;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+// Fila 8: TM4-1
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('TM4-1'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 78.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('SIN Zarpe'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isTM4_1Checked,
+                          onChanged: (value) {
+                            setState(() {
+                              _isTM4_1Checked = value ?? false;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+// Fila 9: TM5
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('TM5'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 78.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Embarcaciones que sobrepasan la autonomía'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isTM5Checked,
+                          onChanged: (value) {
+                            setState(() {
+                              _isTM5Checked = value ?? false;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+// Fila 10: TM6
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('TM6'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 88.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Embarcaciones que sobrepasan la capacidad de carga'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Checkbox(
+                          value: _isTM6Checked,
+                          onChanged: (value) {
+                            setState(() {
+                              _isTM6Checked = value ?? false;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+
+
+
             ],
           ),
         ),
@@ -1714,17 +2585,17 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('DC1'),
+                        child: Text('SP1'),
                       ),
                     ),
                   ),
                   Expanded(
                     child: Container(
-                      height: 48.0,
+                      height: 78.0,
                       padding: const EdgeInsets.all(8.0),
                       child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Piratería (Asalto a una Embarcación)'),
+                        child: Text('Rescate de personas en peligro'),
                       ),
                     ),
                   ),
@@ -1738,91 +2609,8 @@ class _IncidentsFormState extends State<IncidentsForm> {
                           value: _isDC1Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isDC1Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
-                            });
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('DC2'),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('Transporte de ilegales'),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Checkbox(
-                          value: _isDC2Checked, // Valor del checkbox
-                          onChanged: (value) {
-                            setState(() {
-                              _isDC2Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
-                            });
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('DC3'),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('Robos de productos, Embarcación , motores'),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Checkbox(
-                          value: _isDC3Checked, // Valor del checkbox
-                          onChanged: (value) {
-                            setState(() {
-                              _isDC3Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
+                              _isDC1Checked = value ??
+                                  false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },
                         ),
@@ -1837,223 +2625,4 @@ class _IncidentsFormState extends State<IncidentsForm> {
       ],
     );
   }
-
-  Widget maritimeTraffic() {
-    return ExpansionTile(
-      collapsedBackgroundColor: Colors.black54,
-      backgroundColor: Colors.black26,
-      iconColor: Colors.deepPurple,
-      trailing: Icon(
-        _isExpanded1 ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
-        color: Colors.deepPurple,
-      ),
-      title: const Text(
-        'Delito Común',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-        ),
-      ),
-      onExpansionChanged: (bool expanded) {
-        setState(() {
-          _isExpanded1 = expanded;
-        });
-      },
-      initiallyExpanded: _isExpanded1,
-      children: [
-        SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.black, // Color del borde
-                    width: 1.0, // Ancho del borde
-                  ),
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        height: 48.0,
-                        padding: const EdgeInsets.all(8.0),
-                        color: Colors.grey,
-                        child: const Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'CODIGO DE INCIDENTE',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 48.0,
-                        padding: const EdgeInsets.all(8.0),
-                        color: Colors.grey,
-                        child: const Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'DESCRIPCION',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 48.0,
-                        padding: const EdgeInsets.all(8.0),
-                        color: Colors.grey,
-                        child: const Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Seleccione',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('DC1'),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('Piratería (Asalto a una Embarcación)'),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Checkbox(
-                          value: _isDC1Checked, // Valor del checkbox
-                          onChanged: (value) {
-                            setState(() {
-                              _isDC1Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
-                            });
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('DC2'),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('Transporte de ilegales'),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Checkbox(
-                          value: _isDC2Checked, // Valor del checkbox
-                          onChanged: (value) {
-                            setState(() {
-                              _isDC2Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
-                            });
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('DC3'),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('Robos de productos, Embarcación , motores'),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      padding: const EdgeInsets.all(8.0),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Checkbox(
-                          value: _isDC3Checked, // Valor del checkbox
-                          onChanged: (value) {
-                            setState(() {
-                              _isDC3Checked = value ?? false; // Actualizar el valor de la variable según el estado del checkbox
-                            });
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-
-
-
 }
-
