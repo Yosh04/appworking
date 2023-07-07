@@ -9,6 +9,7 @@ class FormPage extends StatefulWidget {
 
 class _FormPageState extends State<FormPage> {
   bool _isExpanded1 = false;
+  List<dynamic> _formValuesInspection = [];
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class _FormPageState extends State<FormPage> {
         backgroundColor: const Color(0xFF1C207F),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(20), // Adjust the value according to your preferences
+            bottom: Radius.circular(20),
           ),
         ),
       ),
@@ -60,7 +61,13 @@ class _FormPageState extends State<FormPage> {
               },
               initiallyExpanded: _isExpanded1,
               children: [
-                inspectionForm(), // Methods where all the boat data is stored
+                InspectionForm(
+                  onFormValuesChanged: (values) {
+                    setState(() {
+                      _formValuesInspection.addAll(values);
+                    });
+                  },
+                ),
               ],
             ),
             SizedBox(height: 10.0),
@@ -68,24 +75,12 @@ class _FormPageState extends State<FormPage> {
         ),
       ),
       bottomNavigationBar: NavigationPrev(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print(_formValuesInspection);
+        },
+        child: Icon(Icons.save_alt_sharp),
+      ),
     );
   }
-
-  Future<DateTime?> showDatePickerWidget(BuildContext context) async {
-    final selectedDate = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2021),
-      builder: (context, child) {
-        return Theme(
-          data: ThemeData.dark(),
-          child: child!,
-        );
-      },
-    );
-
-    return selectedDate;
-  }
-
 }
