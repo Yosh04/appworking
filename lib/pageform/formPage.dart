@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './widgets form/navigationPrev.dart';
 import './widgets form/inspectionForm.dart';
 import './widgets form/boatForm.dart';
+import './widgets form/ownerForm.dart';
 
 class FormPage extends StatefulWidget {
   @override
@@ -84,6 +85,33 @@ class _FormPageState extends State<FormPage> {
                 ],
               ),
               SizedBox(height: 10.0),
+              ExpansionTile(
+                collapsedBackgroundColor: Colors.black54,
+                backgroundColor: Colors.black26,
+                iconColor: Colors.deepPurple,
+                trailing: Icon(
+                  _isExpanded1
+                      ? Icons.keyboard_arrow_up
+                      : Icons.keyboard_arrow_down,
+                  color: Colors.deepPurple,
+                ),
+                title: const Text(
+                  'Datos de Tripulacion',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.white),
+                ),
+                onExpansionChanged: (bool expanded) {
+                  setState(() {
+                    _isExpanded1 = expanded;
+                  });
+                },
+                initiallyExpanded: _isExpanded1,
+                children: [
+                  SingleChildScrollView(
+                    child: TripulacionFormularioWidget(cantidadTripulacion: 2),
+                  ),
+                ],
+              ),
             ],
           ),
         ),

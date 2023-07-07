@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'motorForm.dart';
-import 'package:flutter/material.dart';
 
 class FormularioEmbarcacionWidget extends StatefulWidget {
   @override
@@ -12,6 +11,7 @@ class FormularioEmbarcacionWidget extends StatefulWidget {
 class _FormularioEmbarcacionWidgetState
     extends State<FormularioEmbarcacionWidget> {
   int cantidadMotores = 0;
+  int cantidadtripulacion = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class _FormularioEmbarcacionWidgetState
             SizedBox(height: 16),
             _buildFormField("Capacidad Tanq. Agua"),
             SizedBox(height: 16),
-            _buildNumericFormField("Cantidad de Motores"),
+            _buildNumericFormFieldMotors("Cantidad de Motores"),
             Divider(),
             _buildFormField("Eslora"),
             SizedBox(height: 16),
@@ -51,7 +51,7 @@ class _FormularioEmbarcacionWidgetState
             SizedBox(height: 16),
             _buildFormField("Características Generales De La Embarcacion"),
             Divider(),
-            _buildNumericFormField("Tripulacion"),
+            _buildNumericFormFieldtripulacion("Tripulacion"),
             SizedBox(height: 16),
             _buildNumericFormField("Pasajeros"),
             Divider(),
@@ -67,7 +67,7 @@ class _FormularioEmbarcacionWidgetState
     );
   }
 
-  Widget _buildNumericFormField(String label) {
+  Widget _buildNumericFormFieldMotors(String label) {
     return Theme(
       data: ThemeData(
         primaryColor: const Color(0xFF1C207F),
@@ -96,6 +96,71 @@ class _FormularioEmbarcacionWidgetState
             cantidadMotores = int.tryParse(value) ?? 0;
           });
         },
+      ),
+    );
+  }
+
+  Widget _buildNumericFormFieldtripulacion(String label) {
+    return Theme(
+      data: ThemeData(
+        primaryColor: const Color(0xFF1C207F),
+        hintColor: const Color(0xFF1C207F),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: const Color(0xFF1C207F)),
+          ),
+          filled: true,
+          fillColor: Colors.white,
+        ),
+      ),
+      child: TextFormField(
+        keyboardType: TextInputType.number,
+        decoration: InputDecoration(
+          labelText: label,
+        ),
+        inputFormatters: <TextInputFormatter>[
+          FilteringTextInputFormatter.digitsOnly,
+        ],
+        onChanged: (value) {
+          setState(() {
+            cantidadtripulacion = int.tryParse(value) ?? 0;
+          });
+        },
+      ),
+    );
+  }
+
+  Widget _buildNumericFormField(String label) {
+    return Theme(
+      data: ThemeData(
+        primaryColor: const Color(0xFF1C207F), // Color del texto y el borde
+        hintColor: const Color(0xFF1C207F), // Color del texto de sugerencia
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderSide:
+                BorderSide(color: const Color(0xFF1C207F)), // Color del borde
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: const Color(
+                    0xFF1C207F)), // Color del borde cuando está enfocado
+          ),
+          filled: true, // Relleno activado
+          fillColor: Colors.white, // Color de fondo
+        ),
+      ),
+      child: TextFormField(
+        keyboardType: TextInputType.number, // Configura el teclado numérico
+        decoration: InputDecoration(
+          labelText: label,
+        ),
+        inputFormatters: <TextInputFormatter>[
+          FilteringTextInputFormatter
+              .digitsOnly // Limita la entrada solo a números
+        ],
       ),
     );
   }
