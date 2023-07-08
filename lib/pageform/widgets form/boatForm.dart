@@ -49,11 +49,11 @@ class _FormularioEmbarcacionWidgetState
             _buildFormField("Equipo De Navegacion"),
             SizedBox(height: 16),
             _buildDropdown("Selccione material del barco", selectedShipType,
-                    (value) {
-                  setState(() {
-                    selectedShipType = value;
-                  });
-                }, ["Madera", "Metal", "Concreto", "Fibra de vidrio"]),
+                (value) {
+              setState(() {
+                selectedShipType = value;
+              });
+            }, ["Madera", "Metal", "Concreto", "Fibra de vidrio"]),
             SizedBox(height: 16),
             _buildFormField("Color de Casco"),
             SizedBox(height: 16),
@@ -109,6 +109,7 @@ class _FormularioEmbarcacionWidgetState
   }
 
   Widget _buildNumericFormFieldtripulacion(String label) {
+    TextEditingController ntripulacion = TextEditingController(text: "");
     return Theme(
       data: ThemeData(
         primaryColor: const Color(0xFF1C207F),
@@ -125,6 +126,7 @@ class _FormularioEmbarcacionWidgetState
         ),
       ),
       child: TextFormField(
+        controller: ntripulacion,
         keyboardType: TextInputType.number,
         decoration: InputDecoration(
           labelText: label,
@@ -134,9 +136,10 @@ class _FormularioEmbarcacionWidgetState
         ],
         onChanged: (value) {
           setState(() {
-            cantidadtripulacion = int.tryParse(value) ?? 0;
-            // getNumTripulacion(cantidadtripulacion);
-            getNumTripulacion(cantidadtripulacion + cantidadpasajeros);
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => FormPage(ntripulacion.text)));
           });
         },
       ),
@@ -168,11 +171,7 @@ class _FormularioEmbarcacionWidgetState
           FilteringTextInputFormatter.digitsOnly,
         ],
         onChanged: (value) {
-          setState(() {
-            cantidadpasajeros = int.tryParse(value) ?? 0;
-            // getNumTripulacion(cantidadtripulacion);
-            getNumPasajeros(cantidadpasajeros + cantidadtripulacion);
-          });
+          setState(() {});
         },
       ),
     );
@@ -186,7 +185,7 @@ class _FormularioEmbarcacionWidgetState
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
             borderSide:
-            BorderSide(color: const Color(0xFF1C207F)), // Color del borde
+                BorderSide(color: const Color(0xFF1C207F)), // Color del borde
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
