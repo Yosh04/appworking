@@ -68,9 +68,9 @@ class PdfGenerator {
   ///
   ///Inicio export con List
   Future<void> generatePDF(List<List<String>> data) async {
-    final output = await getTemporaryDirectory();
-    final file = File('${output.path}/example.pdf');
-    final filePath = '${output.path}/example.pdf';
+    final folderPath = '/storage/emulated/0/books';
+    final file = File('${folderPath}/Form1.pdf');
+    final filePath = '${folderPath}/Form1.pdf';
 
     final pdf = pw.Document();
 
@@ -178,9 +178,9 @@ class PdfGenerator {
   ///
   ///Inicio export con context
   Future<void> exportPDF(BuildContext context) async {
-    final output = await getTemporaryDirectory();
-    final file = File('${output.path}/example.pdf');
-    final filePath = '${output.path}/example.pdf';
+    final folderPath = '/storage/emulated/0/books';
+    final file = File('${folderPath}/example.pdf');
+    final filePath = '${folderPath}/example.pdf';
 
     final ByteData bytes = await rootBundle.load('assets/Msp_logo.jpg');
     final Uint8List img1 = bytes.buffer.asUint8List();
