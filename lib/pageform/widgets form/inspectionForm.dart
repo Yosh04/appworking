@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../models/InspectionFormModel.dart';
 
 class InspectionForm extends StatefulWidget {
   @override
@@ -6,8 +9,6 @@ class InspectionForm extends StatefulWidget {
 }
 
 class _InspectionFormState extends State<InspectionForm> {
-  DateTime selectedDate = DateTime.now();
-
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -16,15 +17,15 @@ class _InspectionFormState extends State<InspectionForm> {
       lastDate: DateTime(2025),
     );
 
-    if (picked != null && picked != selectedDate) {
+    if (picked != null &&
+        picked != context.watch<InspectionFormModel>().selectedDate) {
       setState(() {
-        selectedDate = picked;
-        print(selectedDate);
+        context.watch<InspectionFormModel>().setSelectedDate(picked);
+        print(context.watch<InspectionFormModel>().selectedDate);
       });
     }
   }
 
-  TimeOfDay? startTime;
   TimeOfDay? endTime;
   String? selectedActingShip;
   String? selectedCountryFlag;
@@ -59,12 +60,10 @@ class _InspectionFormState extends State<InspectionForm> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _buildFormField("Cantidad Aprox De Combustible"),
             SizedBox(height: 16),
-            _buildTimePicker("Hora de inicio", startTime, (time) {
-              setState(() {
-                startTime = time;
-              });
+            _buildTimePicker("Hora de inicio",
+                context.watch<InspectionFormModel>().startTime, (time) {
+              setState(() {});
             }),
             SizedBox(height: 16),
             _buildTimePicker("Hora de final", endTime, (time) {
