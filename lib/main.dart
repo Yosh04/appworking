@@ -6,6 +6,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf/widgets.dart' as pwg;
 import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:untitled/generador.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -16,9 +17,19 @@ import 'widgets home/pdfviews.dart';
 // Package components
 import 'components/create_folder.dart';
 import 'components/readFolders.dart';
+import 'models/InspectionFormModel.dart';
 
+//MODEL
+import 'models/InspectionFormModel.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => InspectionFormModel(),
+      child: MyApp(),
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -102,14 +113,13 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-
       bottomNavigationBar: CustomBottomNavigationBar(),
     );
   }
 
   Future<void> saveSignatureAsPdf(Uint8List signatureImage) async {
-    Directory appDocumentsDirectoryIMGPDF = Directory(
-        '/storage/emulated/0/books');
+    Directory appDocumentsDirectoryIMGPDF =
+        Directory('/storage/emulated/0/books');
 
     final pdf = pw.Document();
 
@@ -122,11 +132,10 @@ class _MyHomePageState extends State<MyHomePage> {
         },
       ),
     );
-    final outputFile = File('${appDocumentsDirectoryIMGPDF.path}/signature.pdf');
+    final outputFile =
+        File('${appDocumentsDirectoryIMGPDF.path}/signature.pdf');
     await outputFile.writeAsBytes(await pdf.save());
   }
-
-
 
   /*
   void _createFile() async {
