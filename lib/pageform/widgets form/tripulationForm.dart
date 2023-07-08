@@ -13,7 +13,9 @@ void getNumPasajeros(int a) {
 }
 
 class TripulacionFormularioWidget extends StatefulWidget {
-  final int cantidadTripulacion = NPasajeros + Ntripulacion;
+  final int cantidadTripulacion;
+
+  TripulacionFormularioWidget({required this.cantidadTripulacion});
 
   @override
   _TripulacionFormularioWidgetState createState() =>
@@ -23,6 +25,8 @@ class TripulacionFormularioWidget extends StatefulWidget {
 class _TripulacionFormularioWidgetState
     extends State<TripulacionFormularioWidget> {
   String? selectedShipType;
+  bool isCapitanSelected = false;
+  bool isPropietarioSelected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +59,36 @@ class _TripulacionFormularioWidgetState
         SizedBox(height: 16),
         _buildFormField('Carnet de Pesca/Número de Teléfono'),
         SizedBox(height: 16),
-        _buildDropdown("Clasificacion", selectedShipType, (value) {
-          setState(() {
-            selectedShipType = value;
-          });
-        }, ["Pasajero", "Tripulante"]),
+        _buildDropdown(
+          "Clasificación",
+          selectedShipType,
+          (value) {
+            setState(() {
+              selectedShipType = value;
+            });
+          },
+          ["Pasajero", "Tripulante"],
+        ),
+        SizedBox(height: 16),
+        CheckboxListTile(
+          title: const Text('Capitán'),
+          value: isCapitanSelected,
+          onChanged: (value) {
+            setState(() {
+              isCapitanSelected = value!;
+            });
+          },
+        ),
+        SizedBox(height: 16),
+        CheckboxListTile(
+          title: const Text('Propietario'),
+          value: isPropietarioSelected,
+          onChanged: (value) {
+            setState(() {
+              isPropietarioSelected = value!;
+            });
+          },
+        ),
         Divider(),
       ],
     );

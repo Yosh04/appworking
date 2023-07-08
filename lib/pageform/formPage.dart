@@ -4,8 +4,11 @@ import './widgets form/inspectionForm.dart';
 import './widgets form/boatForm.dart';
 import 'widgets form/tripulationForm.dart';
 import './widgets form/IncidentsForm.dart';
+import './widgets form/ownerForm.dart';
 
 class FormPage extends StatefulWidget {
+  final String texto;
+  const FormPage(this.texto, {super.key});
   @override
   _FormPageState createState() => _FormPageState();
 }
@@ -13,8 +16,7 @@ class FormPage extends StatefulWidget {
 class _FormPageState extends State<FormPage> {
   bool _isExpanded1 = false;
   List<dynamic> _formValuesInspection = [];
-
-  int? numeroDefinitivoTripulacion =Ntripulacion ;
+  Map<String, dynamic> tripulanteData = {};
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +113,8 @@ class _FormPageState extends State<FormPage> {
                 initiallyExpanded: _isExpanded1,
                 children: [
                   SingleChildScrollView(
-                    child: TripulacionFormularioWidget(),
+                    child: TripulacionFormularioWidget(
+                        cantidadTripulacion: int.tryParse(widget.texto) ?? 0),
                   ),
                 ],
               ),
@@ -143,6 +146,34 @@ class _FormPageState extends State<FormPage> {
                   ),
                 ],
               ),
+              SizedBox(height: 10.0),
+              ExpansionTile(
+                collapsedBackgroundColor: Colors.black54,
+                backgroundColor: Colors.black26,
+                iconColor: Colors.deepPurple,
+                trailing: Icon(
+                  _isExpanded1
+                      ? Icons.keyboard_arrow_up
+                      : Icons.keyboard_arrow_down,
+                  color: Colors.deepPurple,
+                ),
+                title: const Text(
+                  'Datos de propietarios',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.white),
+                ),
+                onExpansionChanged: (bool expanded) {
+                  setState(() {
+                    _isExpanded1 = expanded;
+                  });
+                },
+                initiallyExpanded: _isExpanded1,
+                children: [
+                  SingleChildScrollView(
+                    child: PropietarioFormularioWidget(),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -156,8 +187,4 @@ class _FormPageState extends State<FormPage> {
       ),
     );
   }
-
-
 }
-
-

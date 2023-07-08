@@ -20,7 +20,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
               IconButton(
                 onPressed: () => {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => FormPage()))
+                      MaterialPageRoute(builder: (context) => FormPage("")))
                 },
                 icon: const Icon(
                   Icons.add_circle_outline_outlined,
