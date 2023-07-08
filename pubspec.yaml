@@ -38,7 +38,11 @@ dependencies:
   pdf: ^3.10.1
   permission_handler: ^10.4.1
   intl: ^0.18.1
+<<<<<<< HEAD
   provider: ^6.0.5
+=======
+  signature: ^5.4.0
+>>>>>>> f727170b867a47744aca10a5effcc075920f28a7
 
 
 
@@ -67,6 +71,9 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/Msp_logo.jpg
+    - assets/gc_logo.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
