@@ -67,7 +67,7 @@ class PdfGenerator {
   ///FIn encabezado
   ///
   ///Inicio export con List
-  Future<void> generatePDF(List<List<String>> data) async {
+  Future<void> generatePDF(BuildContext context, List<List<String>> data) async {
     final folderPath = '/storage/emulated/0/books';
     final file = File('${folderPath}/Form1.pdf');
     final filePath = '${folderPath}/Form1.pdf';
@@ -76,6 +76,58 @@ class PdfGenerator {
 
     final table = buildCombinedTable(data);
 
+    ///
+    final ByteData bytes = await rootBundle.load('assets/Msp_logo.jpg');
+    final Uint8List img1 = bytes.buffer.asUint8List();
+    final ByteData bytes1 = await rootBundle.load('assets/gc_logo.png');
+    final Uint8List img2 = bytes1.buffer.asUint8List();
+
+    pw.Widget buildHeader() {
+      return pw.Column(
+        crossAxisAlignment: pw.CrossAxisAlignment.start,
+        children: [
+          pw.Row(
+            mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+            children: [
+              pw.Image(pw.MemoryImage(img1),
+                  fit: pw.BoxFit.fitHeight, height: 50, width: 50),
+              pw.Column(
+                mainAxisAlignment: pw.MainAxisAlignment.center,
+                children: [
+                  pw.Text(
+                    'SERVICIO NACIONAL DE GUARDACOSTAS',
+                    style: const pw.TextStyle(fontSize: 11),
+                  ),
+                  pw.Text(
+                    'Ministerio de Seguridad Pública',
+                    style: pw.TextStyle(fontSize: 11),
+                  ),
+                  pw.Container(
+                    height: 20,
+                    child: pw.Text(
+                      'AÑO 2023',
+                      style: pw.TextStyle(fontSize: 11),
+                    ),
+                  ),
+                  pw.Text(
+                    'REPORTE DE: INSPECCIÓN DE EMBARCACIONES',
+                    style: pw.TextStyle(fontSize: 9),
+                  ),
+                  pw.Text(
+                    'REGISTRO DE EMBARCACION',
+                    style: const pw.TextStyle(fontSize: 9),
+                  ),
+                ],
+              ),
+              pw.Image(pw.MemoryImage(img2),
+                  fit: pw.BoxFit.fitHeight, height: 60, width: 60),
+            ],
+          ),
+          pw.SizedBox(height: 15),
+        ],
+      );
+    }
+    ///
     ///Primera pagina
     pdf.addPage(
       pw.Page(
@@ -108,9 +160,16 @@ class PdfGenerator {
 
     await file.writeAsBytes(await pdf.save());
 
-    // Realizar otras operaciones con el PDF generado, como compartir o imprimir
-
-    // ...
+    try {
+      OpenFile.open(filePath);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('PDF exportado exitosamente')),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Error al abrir el archivo PDF')),
+      );
+    }
   }
 
   ///Fin export con List

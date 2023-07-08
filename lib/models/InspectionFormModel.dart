@@ -50,8 +50,29 @@ import 'package:flutter/material.dart';
       };
     }
 
+    List<List<String>> getToList() {
+      return [
+        [_selectedDate.toString()],
+        [_selectedDateCurrently.toString()],
+        [_startTime.toString()],
+        [_endTime.toString()],
+        [_selectedActingShip.toString()],
+        [_selectedCountryFlag.toString()],
+        [_selectedShipType.toString()],
+        [_coordinates.toString()],
+        [_position.toString()],
+        [_boardedVessel.toString()],
+        [_matricula.toString()],
+        [_additionalNotes.toString()],
+        [_Nzarpe.toString()],
+        [_navigabilityCertificateNumber.toString()],
+      ];
+    }
 
-  void setSelectedDate(DateTime date) {
+
+
+
+    void setSelectedDate(DateTime date) {
     _selectedDate = date;
     notifyListeners();
   }
