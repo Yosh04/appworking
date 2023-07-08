@@ -31,7 +31,6 @@ class _FormPageState extends State<FormPage> {
   Map<String, dynamic> tripulanteData = {};
   Uint8List? signatureImage;
   int? numeroDefinitivoTripulacion = Ntripulacion;
-  int? numeroDefinitivoTripulacion = Ntripulacion;
 
   @override
   Widget build(BuildContext context) {
@@ -217,38 +216,34 @@ Future<void> saveSignatureAsPdf(Uint8List signatureImage) async {
   Future<void> saveSignatureAsPdf(Uint8List signatureImage) async {
     Directory appDocumentsDirectoryIMGPDF =
         Directory('/storage/emulated/0/books');
-Future<void> saveSignatureAsPdf(Uint8List signatureImage) async {
-  Directory appDocumentsDirectoryIMGPDF =
-      Directory('/storage/emulated/0/books');
+    Future<void> saveSignatureAsPdf(Uint8List signatureImage) async {
+      Directory appDocumentsDirectoryIMGPDF =
+          Directory('/storage/emulated/0/books');
 
-  final pdf = pw.Document();
+      final pdf = pw.Document();
 
-  final signatureImageWidget = pw.MemoryImage(signatureImage);
+      final signatureImageWidget = pw.MemoryImage(signatureImage);
 
-    pdf.addPage(
-      pw.Page(
-        build: (pw.Context context) {
-          return pwg.Image(signatureImageWidget);
-        },
-      ),
-    );
-    final outputFile =
-        File('${appDocumentsDirectoryIMGPDF.path}/signature.pdf');
-    await outputFile.writeAsBytes(await pdf.save());
-    pdf.addPage(
-      pw.Page(
-        build: (pw.Context context) {
-          return pwg.Image(signatureImageWidget);
-        },
-      ),
-    );
-    final outputFile =
-        File('${appDocumentsDirectoryIMGPDF.path}/signature.pdf');
-    await outputFile.writeAsBytes(await pdf.save());
+      pdf.addPage(
+        pw.Page(
+          build: (pw.Context context) {
+            return pwg.Image(signatureImageWidget);
+          },
+        ),
+      );
+      final outputFile =
+          File('${appDocumentsDirectoryIMGPDF.path}/signature.pdf');
+      await outputFile.writeAsBytes(await pdf.save());
+      pdf.addPage(
+        pw.Page(
+          build: (pw.Context context) {
+            return pwg.Image(signatureImageWidget);
+          },
+        ),
+      );
+    }
   }
 }
-
-
 /*
 floatingActionButton: FloatingActionButton(
 onPressed: () {
@@ -257,4 +252,3 @@ print(_formValuesInspection);
 child: Icon(Icons.save_alt_sharp),
 ),
 */
-
