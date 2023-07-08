@@ -113,8 +113,7 @@ class _FormPageState extends State<FormPage> {
                 initiallyExpanded: _isExpanded1,
                 children: [
                   SingleChildScrollView(
-                    child: TripulacionFormularioWidget(
-                        cantidadTripulacion: int.tryParse(widget.texto) ?? 0),
+                    child: TripulacionFormularioWidget(),
                   ),
                 ],
               ),

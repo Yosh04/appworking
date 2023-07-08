@@ -13,9 +13,7 @@ void getNumPasajeros(int a) {
 }
 
 class TripulacionFormularioWidget extends StatefulWidget {
-  final int cantidadTripulacion;
-
-  TripulacionFormularioWidget({required this.cantidadTripulacion});
+  final int cantidadTripulacion = NPasajeros + Ntripulacion;
 
   @override
   _TripulacionFormularioWidgetState createState() =>
@@ -25,8 +23,20 @@ class TripulacionFormularioWidget extends StatefulWidget {
 class _TripulacionFormularioWidgetState
     extends State<TripulacionFormularioWidget> {
   String? selectedShipType;
-  bool isCapitanSelected = false;
-  bool isPropietarioSelected = false;
+  List<bool> _propietarioList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _initializePropietarioList();
+  }
+
+  void _initializePropietarioList() {
+    _propietarioList = List.generate(
+      widget.cantidadTripulacion,
+      (_) => false,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,39 +67,29 @@ class _TripulacionFormularioWidgetState
         SizedBox(height: 16),
         _buildFormField('Identificación'),
         SizedBox(height: 16),
-        _buildFormField('Carnet de Pesca/Número de Teléfono'),
+        _buildFormField('Carnet de Pesca'),
         SizedBox(height: 16),
-        _buildDropdown(
-          "Clasificación",
-          selectedShipType,
-          (value) {
-            setState(() {
-              selectedShipType = value;
-            });
-          },
-          ["Pasajero", "Tripulante"],
-        ),
+        _buildFormField('Número de Teléfono'),
         SizedBox(height: 16),
-        CheckboxListTile(
-          title: const Text('Capitán'),
-          value: isCapitanSelected,
-          onChanged: (value) {
-            setState(() {
-              isCapitanSelected = value!;
-            });
-          },
-        ),
-        SizedBox(height: 16),
+        _buildDropdown("Clasificacion", selectedShipType, (value) {
+          setState(() {
+            selectedShipType = value;
+          });
+        }, ["Pasajero", "Tripulante", "Capitan"]),
+        Divider(),
         CheckboxListTile(
           title: const Text('Propietario'),
-          value: isPropietarioSelected,
+          value: _propietarioList[tripulanteNumero - 1],
           onChanged: (value) {
             setState(() {
-              isPropietarioSelected = value!;
+              _propietarioList = List.generate(
+                widget.cantidadTripulacion,
+                (_) => false,
+              );
+              _propietarioList[tripulanteNumero - 1] = value!;
             });
           },
         ),
-        Divider(),
       ],
     );
   }
