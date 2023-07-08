@@ -21,11 +21,19 @@ import 'models/InspectionFormModel.dart';
 
 //MODEL
 import 'models/InspectionFormModel.dart';
+import 'models/BoatFormModel.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => InspectionFormModel(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<BoatFormModel>(
+          create: (context) => BoatFormModel(),
+        ),
+        ChangeNotifierProvider<InspectionFormModel>(
+          create: (context) => InspectionFormModel(),
+        ),
+      ],
       child: MyApp(),
     ),
   );
