@@ -1,9 +1,27 @@
+import 'dart:io';
+import 'dart:typed_data';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:pdf/widgets.dart' as pwg;
+
 import 'package:flutter/material.dart';
+
+
+//Carpetas de componentes.
+import '../components/pdf_gen.dart';
+import '../components/signature_pad.dart';
+
+
+//Se importa cada widget para los formularios.
 import './widgets form/navigationPrev.dart';
 import './widgets form/inspectionForm.dart';
 import './widgets form/boatForm.dart';
 import 'widgets form/tripulationForm.dart';
 import './widgets form/IncidentsForm.dart';
+
+
+
+
 
 class FormPage extends StatefulWidget {
   @override
@@ -12,9 +30,11 @@ class FormPage extends StatefulWidget {
 
 class _FormPageState extends State<FormPage> {
 
+
+
   bool _isExpanded1 = false;
   List<dynamic> _formValuesInspection = [];
-
+  Uint8List? signatureImage;
   int? numeroDefinitivoTripulacion =Ntripulacion ;
 
   @override
@@ -148,17 +168,50 @@ class _FormPageState extends State<FormPage> {
           ),
         ),
       ),
-      bottomNavigationBar: NavigationPrev(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print(_formValuesInspection);
+        onPressed: () async {
+          signatureImage = await Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SignatureScreen()),
+          );
+          if (signatureImage != null) {
+            await saveSignatureAsPdf(signatureImage!);
+          }
+          setState(() {});
         },
-        child: Icon(Icons.save_alt_sharp),
+        child: const Icon(Icons.add),
+        backgroundColor: Colors.green,
       ),
+      bottomNavigationBar: NavigationPrev(),
+
     );
   }
 
+  Future<void> saveSignatureAsPdf(Uint8List signatureImage) async {
+    Directory appDocumentsDirectoryIMGPDF = Directory(
+        '/storage/emulated/0/books');
 
+    final pdf = pw.Document();
+
+    final signatureImageWidget = pw.MemoryImage(signatureImage);
+
+    pdf.addPage(
+      pw.Page(
+        build: (pw.Context context) {
+          return pwg.Image(signatureImageWidget);
+        },
+      ),
+    );
+    final outputFile = File('${appDocumentsDirectoryIMGPDF.path}/signature.pdf');
+    await outputFile.writeAsBytes(await pdf.save());
+  }
 }
 
-
+/*
+floatingActionButton: FloatingActionButton(
+onPressed: () {
+print(_formValuesInspection);
+},
+child: Icon(Icons.save_alt_sharp),
+),
+*/
