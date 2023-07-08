@@ -67,6 +67,9 @@ class _IncidentsFormState extends State<IncidentsForm> {
 
   bool _isTSP1Checked = false;
 
+  Set<bool> allValues = {};
+
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -94,6 +97,7 @@ class _IncidentsFormState extends State<IncidentsForm> {
   }
 
   Widget commonCrime() {
+
     return ExpansionTile(
       collapsedBackgroundColor: Colors.black54,
       backgroundColor: Colors.black26,
