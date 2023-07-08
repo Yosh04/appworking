@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class InspectionFormModel extends ChangeNotifier {
   DateTime _selectedDate = DateTime.now();
+  DateTime _selectedDateCurrently = DateTime.now();
   TimeOfDay? _startTime;
   TimeOfDay? _endTime;
   String? _selectedActingShip;
@@ -16,6 +17,7 @@ class InspectionFormModel extends ChangeNotifier {
   String? _navigabilityCertificateNumber;
 
   DateTime get selectedDate => _selectedDate;
+  DateTime get selectedDateCurrently => _selectedDateCurrently;
   TimeOfDay? get startTime => _startTime;
   TimeOfDay? get endTime => _endTime;
   String? get selectedActingShip => _selectedActingShip;
@@ -30,6 +32,11 @@ class InspectionFormModel extends ChangeNotifier {
   String? get navigabilityCertificateNumber => _navigabilityCertificateNumber;
 
   void setSelectedDate(DateTime date) {
+    _selectedDate = date;
+    notifyListeners();
+  }
+
+  void setSelectedDateCurrently(DateTime date) {
     _selectedDate = date;
     notifyListeners();
   }

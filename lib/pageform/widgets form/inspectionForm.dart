@@ -9,22 +9,8 @@ class InspectionForm extends StatefulWidget {
 }
 
 class _InspectionFormState extends State<InspectionForm> {
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2025),
-    );
-
-    if (picked != null &&
-        picked != context.watch<InspectionFormModel>().selectedDate) {
-      setState(() {
-        context.watch<InspectionFormModel>().setSelectedDate(picked);
-        print(context.watch<InspectionFormModel>().selectedDate);
-      });
-    }
-  }
+  DateTime selectedDate = DateTime.now();
+  DateTime selectedDateCurrently = DateTime.now();
 
   TimeOfDay? endTime;
   String? selectedActingShip;
@@ -54,60 +40,99 @@ class _InspectionFormState extends State<InspectionForm> {
 
   @override
   Widget build(BuildContext context) {
+    final inspectionForm = Provider.of<InspectionFormModel>(context);
+
+    Future<void> _selectDate(BuildContext context) async {
+      final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2025),
+      );
+
+      if (picked != null && picked != inspectionForm.selectedDate) {
+        inspectionForm.setSelectedDate(picked);
+      }
+    }
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(height: 16),
-            _buildTimePicker("Hora de inicio",
-                context.watch<InspectionFormModel>().startTime, (time) {
-              setState(() {});
-            }),
-            SizedBox(height: 16),
-            _buildTimePicker("Hora de final", endTime, (time) {
-              setState(() {
-                endTime = time;
-              });
-            }),
-            SizedBox(height: 16),
-            _buildDropdown("Embarcación actuante", selectedActingShip, (value) {
-              setState(() {
-                selectedActingShip = value;
-              });
-            }, ["Patrulla propia", "Patrulla externa", "Patrulla conjunta"]),
-            SizedBox(height: 16),
-            _buildTextField("Posición", positionController),
-            SizedBox(height: 16),
-            _buildTextField("Embarcación abordada", boardedVesselController),
-            SizedBox(height: 16),
-            _buildTextField("Matrícula", matriculaController),
-            SizedBox(height: 16),
-            _buildLargeTextField("Notas adicionales",
-                additionalNotesController), // Nuevo campo de texto
-            SizedBox(height: 16),
-            _buildTextField("Número zarpe", NzarpeController),
-            SizedBox(height: 16),
-            _buildDropdown("Banderas de pais", selectedCountryFlag, (value) {
-              setState(() {
-                selectedCountryFlag = value;
-              });
-            }, ["México", "Japón", "Italia", "Costa Rica"]),
-            SizedBox(height: 16),
-            _buildDropdown("Selccione el tipo embarcacion", selectedShipType,
-                (value) {
-              setState(() {
-                selectedShipType = value;
-              });
-            }, ["Madera", "Metal", "Concreto", "Fibra de vidrio"]),
-            SizedBox(height: 16),
-            _buildTextField(
-              "Certificado Navegabilidad",
-              NavigabilityCertificateNumberController,
+            _buildTimePicker(
+              "Hora de inicio",
+              inspectionForm.startTime,
+              (time) {
+                inspectionForm.setStartTime(time);
+              },
+            ),
+            const SizedBox(height: 16),
+            _buildTimePicker(
+              "Hora de inicio",
+              inspectionForm.endTime,
+              (time) {
+                inspectionForm.setEndTime(time);
+              },
             ),
             SizedBox(height: 16),
-
+            _buildDropdown(
+              "Embarcación actuante",
+              inspectionForm.selectedCountryFlag,
+              (value) {
+                inspectionForm.setSelectedCountryFlag(value!);
+              },
+              ["Patrulla propia", "Patrulla externa", "Patrulla conjunta"],
+            ),
+            SizedBox(height: 16),
+            _buildFormField2(
+              'Posición',
+              inspectionForm.position,
+              (value) => inspectionForm.setPosition(value),
+            ),
+            SizedBox(height: 16),
+            _buildFormField2(
+              'Embarcación abordada',
+              inspectionForm.boardedVessel,
+              (value) => inspectionForm.setBoardedVessel(value),
+            ),
+            SizedBox(height: 16),
+            _buildFormField2(
+              'Matrícula',
+              inspectionForm.matricula,
+              (value) => inspectionForm.setMatricula(value),
+            ),
+            SizedBox(height: 16),
+            _buildLargeTextField(
+              "Notas adicionales",
+              inspectionForm.additionalNotes,
+              (value) => inspectionForm.setAdditionalNotes(value),
+            ),
+            SizedBox(height: 16),
+            _buildFormField2(
+              'Matrícula',
+              inspectionForm.Nzarpe,
+              (value) => inspectionForm.setNzarpe(value),
+            ),
+            SizedBox(height: 16),
+            _buildDropdown("Banderas de pais", inspectionForm.selectedShipType,
+                (value) {
+              inspectionForm.setSelectedShipType(value!);
+            }, ["México", "Japón", "Italia", "Costa Rica"]),
+            SizedBox(height: 16),
+            _buildDropdown(
+                "Embarcación actuante", inspectionForm.selectedActingShip,
+                (value) {
+              inspectionForm.setSelectedActingShip(value!);
+            }, ["Madera", "Metal", "Concreto", "Fibra de vidrio"]),
+            SizedBox(height: 16),
+            _buildFormField2(
+              'Certificado Navegabilidad',
+              inspectionForm.navigabilityCertificateNumber,
+              (value) => inspectionForm.setNavigabilityCertificateNumber(value),
+            ),
+            SizedBox(height: 16),
             ElevatedButton(
               onPressed: () => _selectDate(context),
               style: ElevatedButton.styleFrom(
@@ -141,7 +166,12 @@ class _InspectionFormState extends State<InspectionForm> {
     );
   }
 
-  Widget _buildFormField(String label) {
+  Widget _buildDropdown(
+    String label,
+    String? selectedValue,
+    void Function(String?) onChanged,
+    List<String> options,
+  ) {
     return Theme(
       data: ThemeData(
         primaryColor: const Color(0xFF1C207F),
@@ -162,28 +192,115 @@ class _InspectionFormState extends State<InspectionForm> {
           border: Border.all(),
           borderRadius: BorderRadius.circular(4.0),
         ),
-        child: TextFormField(
-          decoration: InputDecoration(
-            labelText: label,
-            border: InputBorder.none,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 0),
+          child: DropdownButtonFormField<String>(
+            decoration: InputDecoration(
+              labelText: label,
+              border: InputBorder.none,
+            ),
+            value: selectedValue,
+            onChanged: onChanged,
+            items: options.map((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
           ),
         ),
       ),
     );
   }
 
-  Widget _buildTimePicker(String label, TimeOfDay? selectedTime,
-      Function(TimeOfDay) onTimeSelected) {
+  Widget _buildFormField2(
+    String label,
+    String? value,
+    void Function(String) onChanged,
+  ) {
     return Theme(
       data: ThemeData(
         primaryColor: const Color(0xFF1C207F),
         hintColor: const Color(0xFF1C207F),
-        inputDecorationTheme: InputDecorationTheme(
+        inputDecorationTheme: const InputDecorationTheme(
           border: OutlineInputBorder(
-            borderSide: BorderSide(color: const Color(0xFF1C207F)),
+            borderSide: BorderSide(color: Color(0xFF1C207F)),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: const Color(0xFF1C207F)),
+            borderSide: BorderSide(color: Color(0xFF1C207F)),
+          ),
+          filled: true,
+          fillColor: Colors.white,
+        ),
+      ),
+      child: TextFormField(
+        decoration: InputDecoration(
+          labelText: label,
+          border: InputBorder.none,
+        ),
+        initialValue: value,
+        onChanged: onChanged,
+      ),
+    );
+  }
+
+  Widget _buildLargeTextField(
+    String label,
+    String? value,
+    void Function(String) onChanged,
+  ) {
+    return Theme(
+      data: ThemeData(
+        primaryColor: const Color(0xFF1C207F),
+        hintColor: const Color(0xFF1C207F),
+        inputDecorationTheme: const InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xFF1C207F)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xFF1C207F)),
+          ),
+          filled: true,
+          fillColor: Colors.white,
+        ),
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(),
+          borderRadius: BorderRadius.circular(4.0),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 0),
+          child: TextFormField(
+            minLines: 6,
+            maxLines: 10,
+            decoration: InputDecoration(
+              labelText: label,
+              border: InputBorder.none,
+            ),
+            initialValue: value,
+            onChanged: onChanged,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTimePicker(
+    String label,
+    TimeOfDay? selectedTime,
+    void Function(TimeOfDay) onTimeSelected,
+  ) {
+    return Theme(
+      data: ThemeData(
+        primaryColor: const Color(0xFF1C207F),
+        hintColor: const Color(0xFF1C207F),
+        inputDecorationTheme: const InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xFF1C207F)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xFF1C207F)),
           ),
           filled: true,
           fillColor: Colors.white,
@@ -222,124 +339,9 @@ class _InspectionFormState extends State<InspectionForm> {
     );
   }
 
-  Widget _buildDropdown(String label, String? selectedValue,
-      Function(String?) onChanged, List<String> options) {
-    return Theme(
-      data: ThemeData(
-        primaryColor: const Color(0xFF1C207F),
-        hintColor: const Color(0xFF1C207F),
-        inputDecorationTheme: InputDecorationTheme(
-          border: OutlineInputBorder(
-            borderSide: BorderSide(color: const Color(0xFF1C207F)),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: const Color(0xFF1C207F)),
-          ),
-          filled: true,
-          fillColor: Colors.white,
-        ),
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(),
-          borderRadius: BorderRadius.circular(4.0),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 0),
-          child: DropdownButtonFormField<String>(
-            decoration: InputDecoration(
-              labelText: label,
-              border: InputBorder.none,
-            ),
-            value: selectedValue,
-            onChanged: onChanged,
-            items: options.map((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildLargeTextField(String label, TextEditingController controller) {
-    return Theme(
-      data: ThemeData(
-        primaryColor: const Color(0xFF1C207F),
-        hintColor: const Color(0xFF1C207F),
-        inputDecorationTheme: InputDecorationTheme(
-          border: OutlineInputBorder(
-            borderSide: BorderSide(color: const Color(0xFF1C207F)),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: const Color(0xFF1C207F)),
-          ),
-          filled: true,
-          fillColor: Colors.white,
-        ),
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(),
-          borderRadius: BorderRadius.circular(4.0),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 0),
-          child: TextFormField(
-            controller: controller,
-            minLines: 6,
-            maxLines: 10,
-            decoration: InputDecoration(
-              labelText: label,
-              border: InputBorder.none,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTextField(String label, TextEditingController controller) {
-    return Theme(
-      data: ThemeData(
-        primaryColor: const Color(0xFF1C207F),
-        hintColor: const Color(0xFF1C207F),
-        inputDecorationTheme: InputDecorationTheme(
-          border: OutlineInputBorder(
-            borderSide: BorderSide(color: const Color(0xFF1C207F)),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: const Color(0xFF1C207F)),
-          ),
-          filled: true,
-          fillColor: Colors.white,
-        ),
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(),
-          borderRadius: BorderRadius.circular(4.0),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 0),
-          child: TextFormField(
-            controller: controller,
-            decoration: InputDecoration(
-              labelText: label,
-              border: InputBorder.none,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
   Future<void> _selectTime(
     TimeOfDay? selectedTime,
-    Function(TimeOfDay) onTimeSelected,
+    void Function(TimeOfDay) onTimeSelected,
   ) async {
     final TimeOfDay? pickedTime = await showTimePicker(
       context: context,

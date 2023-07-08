@@ -17,14 +17,19 @@ import 'widgets home/pdfviews.dart';
 // Package components
 import 'components/create_folder.dart';
 import 'components/readFolders.dart';
+import 'models/InspectionFormModel.dart';
 
 //MODEL
 import 'models/InspectionFormModel.dart';
 
-void main() => runApp(ChangeNotifierProvider(
-      create: (_) => InspectionFormModel(),
-      child: const MyApp(),
-    ));
+void main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => InspectionFormModel(),
+      child: MyApp(),
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
