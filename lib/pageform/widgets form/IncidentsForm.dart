@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../../models/InspectionFormModel.dart';
 class IncidentsForm extends StatefulWidget {
   @override
   _IncidentsFormState createState() => _IncidentsFormState();
@@ -67,7 +67,7 @@ class _IncidentsFormState extends State<IncidentsForm> {
 
   bool _isTSP1Checked = false;
 
-  Set<bool> allValues = {};
+  Set<bool> allValuesCommonCrime = {};
 
 
   @override
@@ -213,6 +213,7 @@ class _IncidentsFormState extends State<IncidentsForm> {
                             setState(() {
                               _isDC1Checked = value ??
                                   false; // Actualizar el valor de la variable según el estado del checkbox
+                              allValuesCommonCrime.add(_isDC1Checked);
                             });
                           },
                         ),
@@ -256,6 +257,7 @@ class _IncidentsFormState extends State<IncidentsForm> {
                             setState(() {
                               _isDC2Checked = value ??
                                   false; // Actualizar el valor de la variable según el estado del checkbox
+                              allValuesCommonCrime.add(_isDC2Checked);
                             });
                           },
                         ),
@@ -301,6 +303,7 @@ class _IncidentsFormState extends State<IncidentsForm> {
                               _isDC3Checked = value ??
                                   false; // Actualizar el valor de la variable según el estado del checkbox
                             });
+                            allValuesCommonCrime.add(_isDC3Checked);
                           },
                         ),
                       ),
