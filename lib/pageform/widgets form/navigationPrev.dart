@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../components/pdf_gen.dart';
 
 class NavigationPrev extends StatelessWidget {
   var currentIndex = 0;
+  Future<void> exportPDF(BuildContext context) async {
+    final pdfGenerator = PdfGenerator();
+    await pdfGenerator.exportPDF(context);
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +28,7 @@ class NavigationPrev extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                // Acción del botón
+                  exportPDF(context); // Actualicé el nombre del método
               },
               style: ElevatedButton.styleFrom(
                 primary: const Color(0xFF1C207F),
@@ -30,7 +36,7 @@ class NavigationPrev extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),
-              child: Text(
+              child: const Text(
                 'Previsualizar',
                 style: TextStyle(
                   color: Colors.white,

@@ -7,6 +7,7 @@ class IncidentsForm extends StatefulWidget {
 
 class _IncidentsFormState extends State<IncidentsForm> {
   bool _isExpanded1 = false;
+
   // Var for the state of checkbox commonCrimes.
   bool _isDC1Checked = false;
   bool _isDC2Checked = false;
@@ -2606,10 +2607,10 @@ class _IncidentsFormState extends State<IncidentsForm> {
                       child: Align(
                         alignment: Alignment.center,
                         child: Checkbox(
-                          value: _isDC1Checked, // Valor del checkbox
+                          value: _isTSP1Checked, // Valor del checkbox
                           onChanged: (value) {
                             setState(() {
-                              _isDC1Checked = value ??
+                              _isTSP1Checked = value ??
                                   false; // Actualizar el valor de la variable según el estado del checkbox
                             });
                           },

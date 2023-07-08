@@ -1,19 +1,28 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:pdf/widgets.dart' as pwg;
 import 'package:path_provider/path_provider.dart';
 import 'package:untitled/generador.dart';
 import 'package:permission_handler/permission_handler.dart';
-//Pachage widgets home
+
+// Package widgets home
 import 'widgets home/bottomNavigationBar.dart';
 import 'widgets home/pdfviews.dart';
-//Package components
+
+// Package components
 import 'components/create_folder.dart';
 import 'components/readFolders.dart';
+
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
@@ -53,20 +62,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void dispose() {
-    timer?.cancel();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    Uint8List? signatureImage;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Guardacostas'),
         backgroundColor: const Color(0xFF1C207F),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(
-                20), // Ajusta el valor de acuerdo a tus preferencias
+            bottom: Radius.circular(20),
           ),
         ),
       ),
@@ -89,23 +98,44 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const SizedBox(height: 10),
-            pdfView(files), //widget de pdf
+            pdfView(files),
           ],
         ),
       ),
+
       bottomNavigationBar: CustomBottomNavigationBar(),
     );
   }
 
-  //Important Code.
+  Future<void> saveSignatureAsPdf(Uint8List signatureImage) async {
+    Directory appDocumentsDirectoryIMGPDF = Directory(
+        '/storage/emulated/0/books');
 
+    final pdf = pw.Document();
+
+    final signatureImageWidget = pw.MemoryImage(signatureImage);
+
+    pdf.addPage(
+      pw.Page(
+        build: (pw.Context context) {
+          return pwg.Image(signatureImageWidget);
+        },
+      ),
+    );
+    final outputFile = File('${appDocumentsDirectoryIMGPDF.path}/signature.pdf');
+    await outputFile.writeAsBytes(await pdf.save());
+  }
+
+
+
+  /*
   void _createFile() async {
     var statusPermission = await Permission.manageExternalStorage.request();
     final externalDir = await getExternalStorageDirectory();
     print(appDocumentsDirectory);
     if (externalDir != null) {
-      print(statusPermission);
-      generatePDFAndOpen(appDocumentsDirectory);
+      //print(statusPermission);
+      //generatePDFAndOpen(appDocumentsDirectory);
       pickDirectory(appDocumentsDirectory).then((fileList) {
         setState(() {
           files = fileList;
@@ -115,4 +145,6 @@ class _MyHomePageState extends State<MyHomePage> {
       print(statusPermission);
     }
   }
+
+  */
 }
