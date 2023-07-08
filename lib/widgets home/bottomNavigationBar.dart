@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/pageform/formPage.dart';
+import '../components/pdf_gen.dart';
 
 
 class CustomBottomNavigationBar extends StatelessWidget {
 
+  PdfGenerator pdfGenerator = PdfGenerator();
 
   @override
   Widget build(BuildContext context) {
@@ -31,14 +33,17 @@ class CustomBottomNavigationBar extends StatelessWidget {
                   size: 38,
                 ),
               ),
-              const IconButton(
-                onPressed: null,
-                icon: Icon(
+              IconButton(
+                onPressed: () {
+                  pdfGenerator.exportPDF(context);
+                },
+                icon: const Icon(
                   Icons.upload_file_outlined,
                   color: Color(0xFF1C207F),
                   size: 38,
                 ),
               ),
+
               const IconButton(
                 onPressed: null,
                 icon: Icon(
