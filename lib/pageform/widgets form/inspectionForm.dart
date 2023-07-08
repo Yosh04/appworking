@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../models/InspectionFormModel.dart';
 import 'package:provider/provider.dart';
+
+import '../../models/InspectionFormModel.dart';
 
 class InspectionForm extends StatefulWidget {
   @override
@@ -11,7 +12,6 @@ class _InspectionFormState extends State<InspectionForm> {
   DateTime selectedDate = DateTime.now();
   DateTime selectedDateCurrently = DateTime.now();
 
-  TimeOfDay? startTime;
   TimeOfDay? endTime;
   String? selectedActingShip;
   String? selectedCountryFlag;

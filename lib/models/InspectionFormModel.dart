@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
   class InspectionFormModel extends ChangeNotifier {
     DateTime _selectedDate = DateTime.now();
@@ -56,6 +55,7 @@ import 'package:provider/provider.dart';
     _selectedDate = date;
     notifyListeners();
   }
+
   void setSelectedDateCurrently(DateTime date) {
     _selectedDate = date;
     notifyListeners();
