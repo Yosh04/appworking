@@ -24,7 +24,6 @@ class _InspectionFormState extends State<InspectionForm> {
     }
   }
 
-
   TimeOfDay? startTime;
   TimeOfDay? endTime;
   String? selectedActingShip;
@@ -37,7 +36,7 @@ class _InspectionFormState extends State<InspectionForm> {
   TextEditingController additionalNotesController = TextEditingController();
   TextEditingController NzarpeController = TextEditingController();
   TextEditingController NavigabilityCertificateNumberController =
-  TextEditingController();
+      TextEditingController();
 
   @override
   void dispose() {
@@ -59,7 +58,8 @@ class _InspectionFormState extends State<InspectionForm> {
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [_buildFormField("Cantidad Aprox De Combustible"),
+          children: [
+            _buildFormField("Cantidad Aprox De Combustible"),
             SizedBox(height: 16),
             _buildTimePicker("Hora de inicio", startTime, (time) {
               setState(() {
@@ -97,11 +97,11 @@ class _InspectionFormState extends State<InspectionForm> {
             }, ["México", "Japón", "Italia", "Costa Rica"]),
             SizedBox(height: 16),
             _buildDropdown("Selccione el tipo embarcacion", selectedShipType,
-                    (value) {
-                  setState(() {
-                    selectedShipType = value;
-                  });
-                }, ["Madera", "Metal", "Concreto", "Fibra de vidrio"]),
+                (value) {
+              setState(() {
+                selectedShipType = value;
+              });
+            }, ["Madera", "Metal", "Concreto", "Fibra de vidrio"]),
             SizedBox(height: 16),
             _buildTextField(
               "Certificado Navegabilidad",
@@ -116,13 +116,14 @@ class _InspectionFormState extends State<InspectionForm> {
                 onPrimary: const Color(0xFF1C207F),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(4.0),
-                  side: BorderSide(color: Colors.grey, width: 1.0),
+                  side: const BorderSide(color: Colors.grey, width: 1.0),
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 alignment: Alignment.centerLeft,
               ),
               child: const Padding(
-                padding: EdgeInsets.only(left: 8.0), // Agregar padding a la izquierda
+                padding: EdgeInsets.only(
+                    left: 8.0), // Agregar padding a la izquierda
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -135,26 +136,23 @@ class _InspectionFormState extends State<InspectionForm> {
                 ),
               ),
             ),
-
-
           ],
         ),
       ),
     );
   }
 
-
   Widget _buildFormField(String label) {
     return Theme(
       data: ThemeData(
         primaryColor: const Color(0xFF1C207F),
         hintColor: const Color(0xFF1C207F),
-        inputDecorationTheme: InputDecorationTheme(
+        inputDecorationTheme: const InputDecorationTheme(
           border: OutlineInputBorder(
-            borderSide: BorderSide(color: const Color(0xFF1C207F)),
+            borderSide: BorderSide(color: Color(0xFF1C207F)),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: const Color(0xFF1C207F)),
+            borderSide: BorderSide(color: Color(0xFF1C207F)),
           ),
           filled: true,
           fillColor: Colors.white,
@@ -174,7 +172,6 @@ class _InspectionFormState extends State<InspectionForm> {
       ),
     );
   }
-
 
   Widget _buildTimePicker(String label, TimeOfDay? selectedTime,
       Function(TimeOfDay) onTimeSelected) {
@@ -342,9 +339,9 @@ class _InspectionFormState extends State<InspectionForm> {
   }
 
   Future<void> _selectTime(
-      TimeOfDay? selectedTime,
-      Function(TimeOfDay) onTimeSelected,
-      ) async {
+    TimeOfDay? selectedTime,
+    Function(TimeOfDay) onTimeSelected,
+  ) async {
     final TimeOfDay? pickedTime = await showTimePicker(
       context: context,
       initialTime: selectedTime ?? TimeOfDay.now(),
@@ -353,15 +350,4 @@ class _InspectionFormState extends State<InspectionForm> {
       onTimeSelected(pickedTime);
     }
   }
-
-
-
-
-
-
-
-
-
-
-
 }
