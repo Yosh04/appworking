@@ -67,7 +67,11 @@ class _IncidentsFormState extends State<IncidentsForm> {
 
   bool _isTSP1Checked = false;
 
-  Set<bool> allValues = {};
+  Set<bool> allValueCommonCrime = {};
+  Set<bool> allValueNarcotics = {};
+  Set<bool> allValuesNaturalResources = {};
+  Set<bool> allValuesSearchRescue = {};
+  Set<bool> allValuesBeachSecurity = {};
 
 
   @override
@@ -213,6 +217,7 @@ class _IncidentsFormState extends State<IncidentsForm> {
                             setState(() {
                               _isDC1Checked = value ??
                                   false; // Actualizar el valor de la variable según el estado del checkbox
+                              
                             });
                           },
                         ),
