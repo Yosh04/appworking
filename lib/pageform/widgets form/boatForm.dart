@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import '../../models/BoatFormModel.dart';
 import 'motorForm.dart';
-import 'tripulationForm.dart';
 import '../formPage.dart';
 
 class FormularioEmbarcacionWidget extends StatefulWidget {
@@ -18,13 +19,18 @@ class _FormularioEmbarcacionWidgetState
   String? selectedShipType;
   @override
   Widget build(BuildContext context) {
+    final boatForm = Provider.of<BoatFormModel>(context);
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _buildFormField("Cantidad Aprox De Combustible"),
+            _buildFormField2(
+                "Cantidad Aprox De Combustible",
+                boatForm.cantidadAproximada,
+                (value) => boatForm.setcantidadAproximada(value)),
             SizedBox(height: 16),
             _buildFormField("Capacid. Tanq. Combustible"),
             SizedBox(height: 16),
@@ -205,6 +211,37 @@ class _FormularioEmbarcacionWidgetState
           FilteringTextInputFormatter
               .digitsOnly // Limita la entrada solo a números
         ],
+      ),
+    );
+  }
+
+  Widget _buildFormField2(
+    String label,
+    String? value,
+    void Function(String) onChanged,
+  ) {
+    return Theme(
+      data: ThemeData(
+        primaryColor: const Color(0xFF1C207F),
+        hintColor: const Color(0xFF1C207F),
+        inputDecorationTheme: const InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xFF1C207F)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xFF1C207F)),
+          ),
+          filled: true,
+          fillColor: Colors.white,
+        ),
+      ),
+      child: TextFormField(
+        decoration: InputDecoration(
+          labelText: label,
+          border: InputBorder.none,
+        ),
+        initialValue: value,
+        onChanged: onChanged,
       ),
     );
   }
