@@ -6,6 +6,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf/widgets.dart' as pwg;
 import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:untitled/generador.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -16,9 +17,17 @@ import 'widgets home/pdfviews.dart';
 // Package components
 import 'components/create_folder.dart';
 import 'components/readFolders.dart';
+import 'models/InspectionFormModel.dart';
 
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => InspectionFormModel(),
+      child: MyApp(),
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
