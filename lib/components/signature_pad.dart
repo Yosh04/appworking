@@ -11,6 +11,8 @@ class SignatureScreen extends StatefulWidget {
   State<SignatureScreen> createState() => _SignatureScreenState();
 }
 
+
+///Definición de screem para firma digital.
 class _SignatureScreenState extends State<SignatureScreen> {
   SignatureController signatureController = SignatureController(
     penStrokeWidth: 3,
@@ -20,7 +22,7 @@ class _SignatureScreenState extends State<SignatureScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
+      child: Scaffold(///Esqueleto de la vista para el cuadro ocultando los desplegables.
         appBar: AppBar(
           title: Text('Add Signature'),
         ),

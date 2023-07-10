@@ -16,6 +16,7 @@ Widget pdfView(List<FileSystemEntity> files) {
           return ElevatedButton(
             onPressed: () {
               pickFile(files[index].path);
+              print(files[index].path);
             },
             child: Container(
               height: 60,

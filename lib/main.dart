@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -56,19 +57,28 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Timer? timer;
+
   List<FileSystemEntity> files = [];
   Directory appDocumentsDirectory = Directory(
-      '/storage/emulated/0/Android/data/com.example.untitled/files/formularios de inspeccion');
+      '/storage/emulated/0/books');
 
   @override
   void initState() {
     super.initState();
-    createFolder();
-    pickDirectory(appDocumentsDirectory).then((fileList) {
-      setState(() {
-        files = fileList;
+    Permission.manageExternalStorage.request();
+
+    timer = Timer.periodic(const Duration(seconds: 4), (Timer t) {
+      createFolder();
+
+      pickDirectory(appDocumentsDirectory).then((fileList) {
+        setState(() {
+          files = fileList;
+        });
       });
+      timer!.cancel();
     });
+
   }
 
   @override

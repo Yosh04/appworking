@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:flutter/services.dart';
 import '../../components/pdf_gen.dart';
+import '../../models/InspectionFormModel.dart';
 
 class NavigationPrev extends StatelessWidget {
   var currentIndex = 0;
@@ -8,11 +11,15 @@ class NavigationPrev extends StatelessWidget {
     final pdfGenerator = PdfGenerator();
     await pdfGenerator.exportPDF(context);
   }
-
+  PdfGenerator pdfGenerator = PdfGenerator();
 
   @override
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
+    final inspectionForm = Provider.of<InspectionFormModel>(context);
+    List<List<String>> data2 = inspectionForm.getToList();
+
+    List<List<String>> data3 = inspectionForm.getToListIncident();
 
     return Container(
       margin: EdgeInsets.all(displayWidth * .05),
@@ -28,7 +35,9 @@ class NavigationPrev extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                  exportPDF(context); // Actualicé el nombre del método
+                //exportPDF(context); // Actualicé el nombre del método
+
+                pdfGenerator.generatePDF(context,data3);
               },
               style: ElevatedButton.styleFrom(
                 primary: const Color(0xFF1C207F),

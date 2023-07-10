@@ -69,6 +69,19 @@ import 'package:flutter/material.dart';
       ];
     }
 
+    List<List<String>> getToListIncident() {
+      return [
+        ["DC1"],
+        ["DC2"],
+        ["DC3"],
+        ["SAR1"],
+        ["SAR2"],
+        ["SA4"],
+        ["SP1"],
+
+      ];
+    }
+
 
 
 
